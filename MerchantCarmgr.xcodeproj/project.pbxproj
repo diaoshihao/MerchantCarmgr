@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9BDCAB72763491717B9EB0 /* libPods-MerchantCarmgr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F2D261E00FD3FC57637772 /* libPods-MerchantCarmgr.a */; };
 		84B6405C1D82A47E0017F4B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6405B1D82A47E0017F4B0 /* main.m */; };
 		84B6405F1D82A47E0017F4B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6405E1D82A47E0017F4B0 /* AppDelegate.m */; };
 		84B640621D82A47E0017F4B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640611D82A47E0017F4B0 /* ViewController.m */; };
@@ -15,6 +16,23 @@
 		84B6406A1D82A47E0017F4B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B640681D82A47E0017F4B0 /* LaunchScreen.storyboard */; };
 		84B640751D82A47E0017F4B0 /* MerchantCarmgrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640741D82A47E0017F4B0 /* MerchantCarmgrTests.m */; };
 		84B640801D82A47E0017F4B0 /* MerchantCarmgrUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6407F1D82A47E0017F4B0 /* MerchantCarmgrUITests.m */; };
+		84B640931D82AD690017F4B0 /* EnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640921D82AD690017F4B0 /* EnterViewController.m */; };
+		84B640971D82B62D0017F4B0 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640961D82B62D0017F4B0 /* TabBarController.m */; };
+		84B6409B1D82C2420017F4B0 /* DefineValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6409A1D82C2420017F4B0 /* DefineValue.m */; };
+		84B6409E1D82C8650017F4B0 /* InheritForEnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6409D1D82C8650017F4B0 /* InheritForEnterViewController.m */; };
+		84B640A11D8638480017F4B0 /* Public.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640A01D8638480017F4B0 /* Public.m */; };
+		84B640A71D8648550017F4B0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640A61D8648550017F4B0 /* LoginViewController.m */; };
+		84B640AB1D864C6B0017F4B0 /* EnterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640AA1D864C6B0017F4B0 /* EnterView.m */; };
+		84B640AE1D8699890017F4B0 /* MerchantEnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640AD1D8699890017F4B0 /* MerchantEnterViewController.m */; };
+		84B640B21D86A5490017F4B0 /* UserProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640B11D86A5490017F4B0 /* UserProtocolViewController.m */; };
+		84B640B41D86A5670017F4B0 /* 服务协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84B640B31D86A5670017F4B0 /* 服务协议.txt */; };
+		84B640B81D8797100017F4B0 /* CustomBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640B71D8797100017F4B0 /* CustomBarViewController.m */; };
+		84B640BB1D879DD60017F4B0 /* InheritForLeagueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640BA1D879DD60017F4B0 /* InheritForLeagueViewController.m */; };
+		84B640BF1D87A4030017F4B0 /* OperatorInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640BE1D87A4030017F4B0 /* OperatorInfoViewController.m */; };
+		84B640C21D87A4230017F4B0 /* MerchantInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640C11D87A4230017F4B0 /* MerchantInfoViewController.m */; };
+		84B640C51D87A4360017F4B0 /* LeagueInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640C41D87A4360017F4B0 /* LeagueInfoViewController.m */; };
+		84B640C81D87A5720017F4B0 /* LeagueParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640C71D87A5720017F4B0 /* LeagueParentViewController.m */; };
+		84B640CF1D87E7A20017F4B0 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640CE1D87E7A20017F4B0 /* CustomTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		588965BFFDA969DD72D676ED /* Pods-MerchantCarmgr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerchantCarmgr.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr.release.xcconfig"; sourceTree = "<group>"; };
 		84B640571D82A47D0017F4B0 /* MerchantCarmgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerchantCarmgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B6405B1D82A47E0017F4B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84B6405D1D82A47E0017F4B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +70,41 @@
 		84B6407B1D82A47E0017F4B0 /* MerchantCarmgrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerchantCarmgrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B6407F1D82A47E0017F4B0 /* MerchantCarmgrUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerchantCarmgrUITests.m; sourceTree = "<group>"; };
 		84B640811D82A47E0017F4B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B640911D82AD690017F4B0 /* EnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterViewController.h; sourceTree = "<group>"; };
+		84B640921D82AD690017F4B0 /* EnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterViewController.m; sourceTree = "<group>"; };
+		84B640951D82B62D0017F4B0 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		84B640961D82B62D0017F4B0 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		84B640991D82C2420017F4B0 /* DefineValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineValue.h; sourceTree = "<group>"; };
+		84B6409A1D82C2420017F4B0 /* DefineValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefineValue.m; sourceTree = "<group>"; };
+		84B6409C1D82C8650017F4B0 /* InheritForEnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InheritForEnterViewController.h; sourceTree = "<group>"; };
+		84B6409D1D82C8650017F4B0 /* InheritForEnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InheritForEnterViewController.m; sourceTree = "<group>"; };
+		84B6409F1D8638480017F4B0 /* Public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
+		84B640A01D8638480017F4B0 /* Public.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Public.m; sourceTree = "<group>"; };
+		84B640A51D8648550017F4B0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		84B640A61D8648550017F4B0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84B640A91D864C6B0017F4B0 /* EnterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterView.h; sourceTree = "<group>"; };
+		84B640AA1D864C6B0017F4B0 /* EnterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterView.m; sourceTree = "<group>"; };
+		84B640AC1D8699890017F4B0 /* MerchantEnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantEnterViewController.h; sourceTree = "<group>"; };
+		84B640AD1D8699890017F4B0 /* MerchantEnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantEnterViewController.m; sourceTree = "<group>"; };
+		84B640B01D86A5490017F4B0 /* UserProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocolViewController.h; sourceTree = "<group>"; };
+		84B640B11D86A5490017F4B0 /* UserProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolViewController.m; sourceTree = "<group>"; };
+		84B640B31D86A5670017F4B0 /* 服务协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "服务协议.txt"; sourceTree = "<group>"; };
+		84B640B61D8797100017F4B0 /* CustomBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBarViewController.h; sourceTree = "<group>"; };
+		84B640B71D8797100017F4B0 /* CustomBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBarViewController.m; sourceTree = "<group>"; };
+		84B640B91D879DD60017F4B0 /* InheritForLeagueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InheritForLeagueViewController.h; sourceTree = "<group>"; };
+		84B640BA1D879DD60017F4B0 /* InheritForLeagueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InheritForLeagueViewController.m; sourceTree = "<group>"; };
+		84B640BD1D87A4030017F4B0 /* OperatorInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperatorInfoViewController.h; sourceTree = "<group>"; };
+		84B640BE1D87A4030017F4B0 /* OperatorInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperatorInfoViewController.m; sourceTree = "<group>"; };
+		84B640C01D87A4230017F4B0 /* MerchantInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInfoViewController.h; sourceTree = "<group>"; };
+		84B640C11D87A4230017F4B0 /* MerchantInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInfoViewController.m; sourceTree = "<group>"; };
+		84B640C31D87A4360017F4B0 /* LeagueInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeagueInfoViewController.h; sourceTree = "<group>"; };
+		84B640C41D87A4360017F4B0 /* LeagueInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueInfoViewController.m; sourceTree = "<group>"; };
+		84B640C61D87A5720017F4B0 /* LeagueParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeagueParentViewController.h; sourceTree = "<group>"; };
+		84B640C71D87A5720017F4B0 /* LeagueParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeagueParentViewController.m; sourceTree = "<group>"; };
+		84B640CD1D87E7A20017F4B0 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		84B640CE1D87E7A20017F4B0 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		88F2D261E00FD3FC57637772 /* libPods-MerchantCarmgr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MerchantCarmgr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA5FDDD940086E5CEEDA58E5 /* Pods-MerchantCarmgr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MerchantCarmgr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9BDCAB72763491717B9EB0 /* libPods-MerchantCarmgr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		620288352EF5DD50A1824240 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88F2D261E00FD3FC57637772 /* libPods-MerchantCarmgr.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84B6404E1D82A47D0017F4B0 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +148,8 @@
 				84B640731D82A47E0017F4B0 /* MerchantCarmgrTests */,
 				84B6407E1D82A47E0017F4B0 /* MerchantCarmgrUITests */,
 				84B640581D82A47D0017F4B0 /* Products */,
+				9AC1C68E87FA87E61A4DDE73 /* Pods */,
+				620288352EF5DD50A1824240 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +166,9 @@
 		84B640591D82A47E0017F4B0 /* MerchantCarmgr */ = {
 			isa = PBXGroup;
 			children = (
-				84B6405D1D82A47E0017F4B0 /* AppDelegate.h */,
-				84B6405E1D82A47E0017F4B0 /* AppDelegate.m */,
-				84B640601D82A47E0017F4B0 /* ViewController.h */,
-				84B640611D82A47E0017F4B0 /* ViewController.m */,
-				84B640631D82A47E0017F4B0 /* Main.storyboard */,
-				84B640661D82A47E0017F4B0 /* Assets.xcassets */,
-				84B640681D82A47E0017F4B0 /* LaunchScreen.storyboard */,
-				84B6406B1D82A47E0017F4B0 /* Info.plist */,
+				84B640981D82C1C30017F4B0 /* 其他 */,
+				84B640941D82B5EE0017F4B0 /* Main */,
+				84B6408D1D82AC830017F4B0 /* 登录和入驻 */,
 				84B6405A1D82A47E0017F4B0 /* Supporting Files */,
 			);
 			path = MerchantCarmgr;
@@ -117,6 +177,9 @@
 		84B6405A1D82A47E0017F4B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84B640631D82A47E0017F4B0 /* Main.storyboard */,
+				84B640681D82A47E0017F4B0 /* LaunchScreen.storyboard */,
+				84B6406B1D82A47E0017F4B0 /* Info.plist */,
 				84B6405B1D82A47E0017F4B0 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -140,6 +203,138 @@
 			path = MerchantCarmgrUITests;
 			sourceTree = "<group>";
 		};
+		84B6408D1D82AC830017F4B0 /* 登录和入驻 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640A81D864C3C0017F4B0 /* View */,
+				84B640901D82ACEE0017F4B0 /* Controller */,
+			);
+			name = "登录和入驻";
+			sourceTree = "<group>";
+		};
+		84B6408E1D82ACAE0017F4B0 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640A51D8648550017F4B0 /* LoginViewController.h */,
+				84B640A61D8648550017F4B0 /* LoginViewController.m */,
+			);
+			name = "登录";
+			sourceTree = "<group>";
+		};
+		84B6408F1D82ACB60017F4B0 /* 入驻 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640AC1D8699890017F4B0 /* MerchantEnterViewController.h */,
+				84B640AD1D8699890017F4B0 /* MerchantEnterViewController.m */,
+				84B640C61D87A5720017F4B0 /* LeagueParentViewController.h */,
+				84B640C71D87A5720017F4B0 /* LeagueParentViewController.m */,
+				84B640BC1D87A3750017F4B0 /* 加盟 */,
+			);
+			name = "入驻";
+			sourceTree = "<group>";
+		};
+		84B640901D82ACEE0017F4B0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84B640911D82AD690017F4B0 /* EnterViewController.h */,
+				84B640921D82AD690017F4B0 /* EnterViewController.m */,
+				84B640B51D8796C60017F4B0 /* 继承控制器 */,
+				84B6408E1D82ACAE0017F4B0 /* 登录 */,
+				84B6408F1D82ACB60017F4B0 /* 入驻 */,
+				84B640AF1D86A4F00017F4B0 /* 用户协议 */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		84B640941D82B5EE0017F4B0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84B6405D1D82A47E0017F4B0 /* AppDelegate.h */,
+				84B6405E1D82A47E0017F4B0 /* AppDelegate.m */,
+				84B640661D82A47E0017F4B0 /* Assets.xcassets */,
+				84B640951D82B62D0017F4B0 /* TabBarController.h */,
+				84B640961D82B62D0017F4B0 /* TabBarController.m */,
+				84B640601D82A47E0017F4B0 /* ViewController.h */,
+				84B640611D82A47E0017F4B0 /* ViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		84B640981D82C1C30017F4B0 /* 其他 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640C91D87E69A0017F4B0 /* 自定义控件 */,
+				84B640991D82C2420017F4B0 /* DefineValue.h */,
+				84B6409A1D82C2420017F4B0 /* DefineValue.m */,
+				84B6409F1D8638480017F4B0 /* Public.h */,
+				84B640A01D8638480017F4B0 /* Public.m */,
+			);
+			name = "其他";
+			sourceTree = "<group>";
+		};
+		84B640A81D864C3C0017F4B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84B640A91D864C6B0017F4B0 /* EnterView.h */,
+				84B640AA1D864C6B0017F4B0 /* EnterView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		84B640AF1D86A4F00017F4B0 /* 用户协议 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640B31D86A5670017F4B0 /* 服务协议.txt */,
+				84B640B01D86A5490017F4B0 /* UserProtocolViewController.h */,
+				84B640B11D86A5490017F4B0 /* UserProtocolViewController.m */,
+			);
+			name = "用户协议";
+			sourceTree = "<group>";
+		};
+		84B640B51D8796C60017F4B0 /* 继承控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				84B6409C1D82C8650017F4B0 /* InheritForEnterViewController.h */,
+				84B6409D1D82C8650017F4B0 /* InheritForEnterViewController.m */,
+				84B640B61D8797100017F4B0 /* CustomBarViewController.h */,
+				84B640B71D8797100017F4B0 /* CustomBarViewController.m */,
+				84B640B91D879DD60017F4B0 /* InheritForLeagueViewController.h */,
+				84B640BA1D879DD60017F4B0 /* InheritForLeagueViewController.m */,
+			);
+			name = "继承控制器";
+			sourceTree = "<group>";
+		};
+		84B640BC1D87A3750017F4B0 /* 加盟 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640BD1D87A4030017F4B0 /* OperatorInfoViewController.h */,
+				84B640BE1D87A4030017F4B0 /* OperatorInfoViewController.m */,
+				84B640C01D87A4230017F4B0 /* MerchantInfoViewController.h */,
+				84B640C11D87A4230017F4B0 /* MerchantInfoViewController.m */,
+				84B640C31D87A4360017F4B0 /* LeagueInfoViewController.h */,
+				84B640C41D87A4360017F4B0 /* LeagueInfoViewController.m */,
+			);
+			name = "加盟";
+			sourceTree = "<group>";
+		};
+		84B640C91D87E69A0017F4B0 /* 自定义控件 */ = {
+			isa = PBXGroup;
+			children = (
+				84B640CD1D87E7A20017F4B0 /* CustomTextField.h */,
+				84B640CE1D87E7A20017F4B0 /* CustomTextField.m */,
+			);
+			name = "自定义控件";
+			sourceTree = "<group>";
+		};
+		9AC1C68E87FA87E61A4DDE73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA5FDDD940086E5CEEDA58E5 /* Pods-MerchantCarmgr.debug.xcconfig */,
+				588965BFFDA969DD72D676ED /* Pods-MerchantCarmgr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +342,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B640841D82A47E0017F4B0 /* Build configuration list for PBXNativeTarget "MerchantCarmgr" */;
 			buildPhases = (
+				B7851CDD364F94A2871105AC /* 📦 Check Pods Manifest.lock */,
 				84B640531D82A47D0017F4B0 /* Sources */,
 				84B640541D82A47D0017F4B0 /* Frameworks */,
 				84B640551D82A47D0017F4B0 /* Resources */,
+				7CD89579CE918323D900F478 /* 📦 Embed Pods Frameworks */,
+				57B361CD3AF994DFCC036CC0 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +405,7 @@
 				TargetAttributes = {
 					84B640561D82A47D0017F4B0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = JP3LJ67987;
 					};
 					84B6406F1D82A47E0017F4B0 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -244,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B6406A1D82A47E0017F4B0 /* LaunchScreen.storyboard in Resources */,
+				84B640B41D86A5670017F4B0 /* 服务协议.txt in Resources */,
 				84B640671D82A47E0017F4B0 /* Assets.xcassets in Resources */,
 				84B640651D82A47E0017F4B0 /* Main.storyboard in Resources */,
 			);
@@ -265,14 +465,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57B361CD3AF994DFCC036CC0 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CD89579CE918323D900F478 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7851CDD364F94A2871105AC /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84B640531D82A47D0017F4B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				84B640621D82A47E0017F4B0 /* ViewController.m in Sources */,
+				84B640AB1D864C6B0017F4B0 /* EnterView.m in Sources */,
+				84B640CF1D87E7A20017F4B0 /* CustomTextField.m in Sources */,
+				84B640BB1D879DD60017F4B0 /* InheritForLeagueViewController.m in Sources */,
+				84B640AE1D8699890017F4B0 /* MerchantEnterViewController.m in Sources */,
+				84B640C21D87A4230017F4B0 /* MerchantInfoViewController.m in Sources */,
+				84B640C81D87A5720017F4B0 /* LeagueParentViewController.m in Sources */,
+				84B640931D82AD690017F4B0 /* EnterViewController.m in Sources */,
+				84B640A11D8638480017F4B0 /* Public.m in Sources */,
+				84B640B81D8797100017F4B0 /* CustomBarViewController.m in Sources */,
+				84B6409E1D82C8650017F4B0 /* InheritForEnterViewController.m in Sources */,
+				84B6409B1D82C2420017F4B0 /* DefineValue.m in Sources */,
+				84B640C51D87A4360017F4B0 /* LeagueInfoViewController.m in Sources */,
+				84B640BF1D87A4030017F4B0 /* OperatorInfoViewController.m in Sources */,
+				84B640A71D8648550017F4B0 /* LoginViewController.m in Sources */,
+				84B640971D82B62D0017F4B0 /* TabBarController.m in Sources */,
 				84B6405F1D82A47E0017F4B0 /* AppDelegate.m in Sources */,
 				84B6405C1D82A47E0017F4B0 /* main.m in Sources */,
+				84B640B21D86A5490017F4B0 /* UserProtocolViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,9 +675,12 @@
 		};
 		84B640851D82A47E0017F4B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA5FDDD940086E5CEEDA58E5 /* Pods-MerchantCarmgr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MerchantCarmgr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiwuchebao.MerchantCarmgr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,9 +689,12 @@
 		};
 		84B640861D82A47E0017F4B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 588965BFFDA969DD72D676ED /* Pods-MerchantCarmgr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MerchantCarmgr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiwuchebao.MerchantCarmgr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +766,7 @@
 				84B640861D82A47E0017F4B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84B640871D82A47E0017F4B0 /* Build configuration list for PBXNativeTarget "MerchantCarmgrTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +775,7 @@
 				84B640891D82A47E0017F4B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84B6408A1D82A47E0017F4B0 /* Build configuration list for PBXNativeTarget "MerchantCarmgrUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +784,7 @@
 				84B6408C1D82A47E0017F4B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

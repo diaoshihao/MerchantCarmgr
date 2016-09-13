@@ -13,10 +13,14 @@
 @end
 
 @implementation AppDelegate
+{
+    UITextView *textView;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    textView = [[UITextView alloc] init];
     return YES;
 }
 
