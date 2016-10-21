@@ -17,32 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.backColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self customNavigationBar];
+    [self addLeftItemButton];
 }
 
-- (void)customNavigationBar {
-    UIView *stateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-    [self.view addSubview:stateView];
-    self.customNavBar = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
-    [self.view addSubview:self.customNavBar];
-    
-    UIButton *leftButton = [Public imageButton:@"后退橙"];
-    [leftButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.customNavBar addSubview:leftButton];
-    [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+- (void)addLeftItemButton {
+    self.leftItemButton = [Public imageButton:@"后退橙"];
+    [self.leftItemButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.customNavBar addSubview:self.leftItemButton];
+    [self.leftItemButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.left.mas_equalTo(20);
         make.width.mas_equalTo(60);
         make.height.mas_equalTo(44);
-    }];
-    
-    self.barTitleLabel = [[UILabel alloc] init];
-    [self.customNavBar addSubview:self.barTitleLabel];
-    [self.barTitleLabel contentHuggingPriorityForAxis:UILayoutConstraintAxisVertical];
-    [self.barTitleLabel contentHuggingPriorityForAxis:UILayoutConstraintAxisHorizontal];
-    [self.barTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.customNavBar);
     }];
 }
 
@@ -51,7 +39,10 @@
 }
 
 - (UIView *)separatorViewWithHeight:(CGFloat)height constraintsView:(UIView *)contraintsView superView:(UIView *)superView {
-    UIView *separatorView = [EnterView separatorView];
+    UIView *separatorView = [GeneralView separatorView];
+    if (height == [DefineValue pixHeight]) {
+        separatorView.backgroundColor = kColor(200, 199, 204, 1);
+    }
     [superView addSubview:separatorView];
     [separatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         if (contraintsView != nil) {

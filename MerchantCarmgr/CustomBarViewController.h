@@ -6,13 +6,10 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BasicViewController.h"
 #import "EnterView.h"
 
-@interface CustomBarViewController : UIViewController
-
-@property (nonatomic, strong) UIView *customNavBar;
-@property (nonatomic, strong) UILabel *barTitleLabel;
+@interface CustomBarViewController : BasicViewController
 
 
 /**

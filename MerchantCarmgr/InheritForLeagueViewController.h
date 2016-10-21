@@ -6,15 +6,20 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
+/******************************************************
+ 给加盟页的继承类
+ *****************************************************/
+
 #import "CustomBarViewController.h"
+#import "PPNetworkHelper.h"
 
 typedef NS_ENUM(NSUInteger, EnterStep) {
-    EnterStepOperator = 0,
-    EnterStepMerchant,
-    EnterStepLeague,
+    EnterStepOperator = 0,  //经营者信息
+    EnterStepMerchant,      //商户信息
+    EnterStepLeague,        //加盟信息
 };
 
-@interface InheritForLeagueViewController : CustomBarViewController
+@interface InheritForLeagueViewController : CustomBarViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIView *separatorView;
 

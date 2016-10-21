@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.barTitleLabel.text = @"加盟";
+    self.title = @"加盟";
     [self initStepButtons];
 }
 
@@ -32,7 +32,7 @@
     [self separatorViewWithHeight:7 constraintsView:self.customNavBar superView:self.view];
     
     NSArray *titles = @[@"经营者信息",@"商户信息",@"加盟信息"];
-    CGFloat buttonWidth = kScreenWidth / 3;
+    CGFloat buttonWidth = [DefineValue screenWidth] / 3;
     self.buttons = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < 3; i++) {
         UIButton *button = [self buttonWithTitle:titles[i] frame:CGRectMake(i * buttonWidth, 71, buttonWidth, 44)];
@@ -40,8 +40,9 @@
         [self.buttons addObject:button];
     }
     
-    self.separatorView = [self separatorViewWithHeight:7 constraintsView:self.buttons.firstObject superView:self.view];;
+    self.separatorView = [self separatorViewWithHeight:7 constraintsView:self.buttons.firstObject superView:self.view];
 }
+
 
 - (UIButton *)buttonWithTitle:(NSString *)title frame:(CGRect)frame {
     UIButton *button = [EnterView leftTitleAndRightImageButton:title];
@@ -61,7 +62,7 @@
     UITextField *textField = [EnterView textFieldWithLabelText:labelTitle placeholder:placeholder];
     [superView addSubview:textField];
     
-    [self separatorViewWithHeight:kPixHeight constraintsView:textField superView:superView];
+    [self separatorViewWithHeight:[DefineValue pixHeight] constraintsView:textField superView:superView];
     return textField;
 }
 

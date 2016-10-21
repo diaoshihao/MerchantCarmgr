@@ -7,14 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "BasicNavigationController.h"
 #import "EnterViewController.h"
 #import "TabBarController.h"
+#import "GuidePageViewController.h"
 
 @interface ViewController ()
-
-@property (nonatomic, assign) BOOL hasLogin;
-
-@property (nonatomic, strong) UIViewController *currentViewController;
 
 @end
 
@@ -23,28 +21,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    EnterViewController *enterVC = [[EnterViewController alloc] init];
-    UINavigationController *enterNav = [[UINavigationController alloc] initWithRootViewController:enterVC];
-    [self addChildViewController:enterNav];
-    
-    TabBarController *tabBarVC = [[TabBarController alloc] init];
-    [self addChildViewController:tabBarVC];
-    
-    [self hasLoginOrNot];
-    
-    if (!self.hasLogin) {
-        [self transitionFromViewController:tabBarVC toViewController:enterNav duration:0.0 options:UIViewAnimationOptionLayoutSubviews animations:nil completion:nil];
-        self.currentViewController = enterNav;
-    } else {
-        self.currentViewController = tabBarVC;
-    }
-    
-    [self.view insertSubview:self.currentViewController.view atIndex:0];
+    self.navigationController.navigationBarHidden = YES;
+    [self showPage];
 }
 
-- (void)hasLoginOrNot {
-    self.hasLogin = NO;
+- (void)showPage {
+    if ([self isFirstLuanch]) {
+        [self showGuidePage];//首次使用
+    }
+    else if ([self userDidLogin]) {
+        [self showHomePage];//已自动登录
+    }
+    else {
+        [self showLoginPage];
+    }
+}
+
+//显示引导页
+- (void)showGuidePage {
+    GuidePageViewController *guideVC = [[GuidePageViewController alloc] init];
+    [self addChildViewController:guideVC];
+    [self.view addSubview:guideVC.view];
+}
+
+//显示首页
+- (void)showHomePage {
+    TabBarController *tabBarVC = [[TabBarController alloc] init];
+    [self addChildViewController:tabBarVC];
+    [self.view addSubview:tabBarVC.view];
+}
+
+//显示登录页
+- (void)showLoginPage {
+    EnterViewController *enterVC = [[EnterViewController alloc] init];
+    BasicNavigationController *enterNav = [[BasicNavigationController alloc] initWithRootViewController:enterVC];
+    [self addChildViewController:enterNav];
+    [self.view addSubview:enterNav.view];
+}
+
+//判断是否使用新版本
+- (BOOL)isFirstLuanch {
+    NSString *key = (NSString *)kCFBundleVersionKey;
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:key];
+    NSString *savedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+    if ([version isEqualToString:savedVersion]) {
+        return NO;
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version"];
+        return YES;
+    }
+}
+
+//判断用户是否自动登录
+- (BOOL)userDidLogin {
+    /**
+     * code
+     */
+    return YES;
 }
 
 

@@ -7,17 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <Masonry.h>
 #import "Public.h"
+#import "GeneralView.h"
 #import "CustomTextField.h"
+#import "UploadImageView.h"
 
-@interface EnterView : NSObject
+@interface EnterView : UIView
 
-/**
- * 创建分割View
- */
-+ (UIView *)separatorView;
 
 /**
  * 创建发送验证码Button
@@ -40,8 +37,21 @@
 + (UILabel *)labelWithText:(NSString *)text;
 
 /**
- * 创建并返回上传图片的显示窗口imageview
+ * 创建带有上传按钮的imageView
+ * 是否带有按钮通过Bool值传递
+ * 返回字典
  */
-+ (UIImageView *)imageViewForUploadPhoto;
++ (NSDictionary *)imageViewConstraintBy:(UIView *)constraint superView:(UIView *)superView withUploadButton:(BOOL)withOrNot;
+
+/**
+ * 创建带有title和上传按钮的imageview
+ * 返回字典
+ */
++ (NSDictionary *)imageViewForUploadWithLabel:(NSString *)title constraint:(UIView *)constraint superView:(UIView *)superView withUploadButton:(BOOL)withOrNot;
+
+/**
+ * 创建并返回AlertSheet
+ */
++ (UIAlertController *)alertSheetForSelectPhotoInTarget:(UIViewController *)viewController;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "FindPasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.barTitleLabel.text = @"登录";
+    self.title = @"登录";
     self.usernameField.placeholder = @"请输入账号";
     self.passwordField.placeholder = @"请输入密码";
     [self initAndLayoutView];
@@ -29,14 +30,14 @@
 - (UIButton *)createButton:(NSString *)title selector:(SEL)action {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:title forState:UIControlStateNormal];
-    button.titleLabel.font = kFont(13);
-    [button setTitleColor:kButtonColor forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:13];
+    [button setTitleColor:[DefineValue buttonColor] forState:UIControlStateNormal];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
 
 - (void)initAndLayoutView {
-    self.contactBtn = [self createButton:@"联系商家" selector:@selector(contactMerchant)];
+    self.contactBtn = [self createButton:@"联系我们" selector:@selector(contactUs)];
     [self.view addSubview:self.contactBtn];
     [self.contactBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.separatorView.mas_bottom).offset(0);
@@ -63,12 +64,20 @@
     
 }
 
-- (void)contactMerchant {
-    NSLog(@"contact");
+//拨打电话
+- (void)callUs {
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:400-111-9665"]]];
+    [self.view addSubview:callWebview];
+}
+
+- (void)contactUs {
+    [self callUs];
 }
 
 - (void)findPassword {
-    NSLog(@"find");
+    FindPasswordViewController *findVC = [[FindPasswordViewController alloc] init];
+    [self.navigationController pushViewController:findVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

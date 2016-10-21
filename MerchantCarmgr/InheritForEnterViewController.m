@@ -34,7 +34,7 @@
     }];
     
     //输入框分割线
-    UIView *textFieldSeparator = [self separatorViewWithHeight:kPixHeight constraintsView:self.usernameField superView:self.view];
+    UIView *textFieldSeparator = [self separatorViewWithHeight:[DefineValue pixHeight] constraintsView:self.usernameField superView:self.view];
     
     self.passwordField = [Public twoSpaceTextField:nil];
     [self.view addSubview:self.passwordField];

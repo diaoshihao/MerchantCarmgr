@@ -27,19 +27,25 @@ typedef NS_ENUM(NSUInteger, ButtonFor) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
-    self.navigationController.navigationBar.translucent = NO;
-    self.view.backgroundColor = kMianColor;
+    [self backgroundImage];
     [self initView];
 }
 
+- (void)backgroundImage {
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    imageView.image = [UIImage imageNamed:@"引导页"];
+    [self.view addSubview:imageView];
+}
+
 - (void)initView {
+    CGFloat height = ([DefineValue screenWidth] * 40 / 75 - 100) / 2;//距离底部的高度
     UIButton *enterBtn = [self createButtonWithTitle:@"入驻易务车宝" UseFor:ForEnter];
     [enterBtn addTarget:self action:@selector(enter) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:enterBtn];
     [enterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
-        make.bottom.mas_equalTo(-60);
+        make.bottom.mas_equalTo(-height);
         make.height.mas_equalTo(44);
     }];
     
@@ -67,11 +73,11 @@ typedef NS_ENUM(NSUInteger, ButtonFor) {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:title forState:UIControlStateNormal];
     button.layer.cornerRadius = 6;
-    button.titleLabel.font = kFont16;
+    button.titleLabel.font = [DefineValue font16];
     switch (useFor) {
         case ForLogin:
             button.backgroundColor = [UIColor whiteColor];
-            [button setTitleColor:kMianColor forState:UIControlStateNormal];
+            [button setTitleColor:[DefineValue mainColor] forState:UIControlStateNormal];
             break;
         case ForEnter:
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

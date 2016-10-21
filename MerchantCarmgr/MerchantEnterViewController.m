@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.barTitleLabel.text = @"入驻";
+    self.title = @"入驻";
     self.usernameField.placeholder = @"请输入您的账号";
     self.passwordField.placeholder = @"请输入您的密码";
     [self initAndLayoutView];
@@ -60,7 +60,7 @@
     
     UILabel *label = [[UILabel alloc] init];
     label.text = @"我已阅读并同意";
-    label.font = kFont12;
+    label.font = [DefineValue font12];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(imageView.mas_right).offset(15);
@@ -70,8 +70,8 @@
     
     UIButton *agreeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [agreeButton setTitle:@"《易务车宝平台用户协议》" forState:UIControlStateNormal];
-    agreeButton.titleLabel.font = kFont12;
-    [agreeButton setTitleColor:kMianColor forState:UIControlStateNormal];
+    agreeButton.titleLabel.font = [DefineValue font12];
+    [agreeButton setTitleColor:[DefineValue mainColor] forState:UIControlStateNormal];
     [agreeButton addTarget:self action:@selector(pushToUserProtocol) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:agreeButton];
     [agreeButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +119,7 @@
     }];
     
     //输入框分割线
-    UIView *textFieldSeparator = [self separatorViewWithHeight:kPixHeight constraintsView:self.phoneNumField superView:self.view];
+    UIView *textFieldSeparator = [self separatorViewWithHeight:[DefineValue pixHeight] constraintsView:self.phoneNumField superView:self.view];
     
     self.verifyCodeField = [Public twoSpaceTextField:@"请输入您的短信验证码"];
     [self.view addSubview:self.verifyCodeField];
