@@ -21,18 +21,6 @@
     return self;
 }
 
-- (void)setModel:(MessageModel *)model {
-    _model = model;
-    [self loadDataWithModel:model];
-}
-
-- (void)loadDataWithModel:(MessageModel *)model {
-    self.titleLabel.text = model.title;
-    self.timeLabel.text = model.time;
-    self.photoView.image = [UIImage imageNamed:model.imageUrl];
-    self.subTitleLabel.text = model.subTitle;
-}
-
 - (void)customCellView {
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -60,7 +48,7 @@
     self.photoView = [[UIImageView alloc] init];
     [self.contentView addSubview:self.photoView];
     [self.photoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(separator1.mas_bottom);
+        make.top.mas_equalTo(separator1.mas_bottom).offset(10);
         make.left.mas_equalTo(30);
         make.right.mas_equalTo(-30);
         make.height.mas_equalTo(self.photoView.mas_width).multipliedBy(0.4);
@@ -69,7 +57,7 @@
     self.subTitleLabel = [[UILabel alloc] init];
     [self.contentView addSubview:self.subTitleLabel];
     [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.photoView.mas_bottom).offset(20);
+        make.top.mas_equalTo(self.photoView.mas_bottom).offset(10);
         make.left.mas_equalTo(self.photoView.mas_left);
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(44);
@@ -114,12 +102,25 @@
     [button setTitle:@"点击查看详情" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
 
-- (void)click {
-    
+- (void)clickAction {
+    self.click();
+}
+
+#pragma mark - setData
+- (void)setModel:(MessageModel *)model {
+    _model = model;
+    [self loadDataWithModel:model];
+}
+
+- (void)loadDataWithModel:(MessageModel *)model {
+    self.titleLabel.text = model.title;
+    self.timeLabel.text = model.time;
+    self.photoView.image = [UIImage imageNamed:model.imageUrl];
+    self.subTitleLabel.text = model.subTitle;
 }
 
 - (void)awakeFromNib {

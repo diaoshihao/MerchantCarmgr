@@ -57,7 +57,7 @@
 		8435BF8E1DB764710000F630 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF8D1DB764710000F630 /* CommentViewController.m */; };
 		8435BF911DB764D40000F630 /* ComplaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF901DB764D40000F630 /* ComplaintViewController.m */; };
 		8435BF941DB76A7E0000F630 /* SecondaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF931DB76A7E0000F630 /* SecondaryViewController.m */; };
-		8435BF991DB77CAA0000F630 /* ReleaseTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF981DB77CAA0000F630 /* ReleaseTextView.m */; };
+		8435BF991DB77CAA0000F630 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF981DB77CAA0000F630 /* CustomTextView.m */; };
 		8435BFA01DB8647C0000F630 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BF9F1DB8647C0000F630 /* PhotoManager.m */; };
 		8435BFA61DB89EC90000F630 /* PhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BFA51DB89EC90000F630 /* PhotoBrowserViewController.m */; };
 		8435BFB01DB8A7130000F630 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BFAF1DB8A7130000F630 /* LevelViewController.m */; };
@@ -72,6 +72,10 @@
 		849599BF1DB9EDA400B168D7 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599BE1DB9EDA400B168D7 /* MessageTableViewController.m */; };
 		849599C21DB9EDC800B168D7 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599C11DB9EDC800B168D7 /* MessageTableViewCell.m */; };
 		849599C51DB9F4AB00B168D7 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599C41DB9F4AB00B168D7 /* MessageModel.m */; };
+		849599CD1DBDACB600B168D7 /* ComplaintTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599CC1DBDACB600B168D7 /* ComplaintTableViewController.m */; };
+		849599D01DBDAD3200B168D7 /* ComplaintTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599CF1DBDAD3200B168D7 /* ComplaintTableViewCell.m */; };
+		849599D31DBDB6DD00B168D7 /* ComplaintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599D21DBDB6DD00B168D7 /* ComplaintModel.m */; };
+		849599D61DBDE3A700B168D7 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599D51DBDE3A700B168D7 /* CustomLabel.m */; };
 		84B6405C1D82A47E0017F4B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6405B1D82A47E0017F4B0 /* main.m */; };
 		84B6405F1D82A47E0017F4B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6405E1D82A47E0017F4B0 /* AppDelegate.m */; };
 		84B640621D82A47E0017F4B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640611D82A47E0017F4B0 /* ViewController.m */; };
@@ -211,8 +215,8 @@
 		8435BF901DB764D40000F630 /* ComplaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintViewController.m; sourceTree = "<group>"; };
 		8435BF921DB76A7E0000F630 /* SecondaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryViewController.h; sourceTree = "<group>"; };
 		8435BF931DB76A7E0000F630 /* SecondaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryViewController.m; sourceTree = "<group>"; };
-		8435BF971DB77CAA0000F630 /* ReleaseTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseTextView.h; sourceTree = "<group>"; };
-		8435BF981DB77CAA0000F630 /* ReleaseTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseTextView.m; sourceTree = "<group>"; };
+		8435BF971DB77CAA0000F630 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		8435BF981DB77CAA0000F630 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		8435BF9E1DB8647C0000F630 /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
 		8435BF9F1DB8647C0000F630 /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
 		8435BFA41DB89EC90000F630 /* PhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserViewController.h; sourceTree = "<group>"; };
@@ -241,6 +245,14 @@
 		849599C11DB9EDC800B168D7 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		849599C31DB9F4AB00B168D7 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		849599C41DB9F4AB00B168D7 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		849599CB1DBDACB500B168D7 /* ComplaintTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintTableViewController.h; sourceTree = "<group>"; };
+		849599CC1DBDACB600B168D7 /* ComplaintTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintTableViewController.m; sourceTree = "<group>"; };
+		849599CE1DBDAD3200B168D7 /* ComplaintTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintTableViewCell.h; sourceTree = "<group>"; };
+		849599CF1DBDAD3200B168D7 /* ComplaintTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintTableViewCell.m; sourceTree = "<group>"; };
+		849599D11DBDB6DD00B168D7 /* ComplaintModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintModel.h; sourceTree = "<group>"; };
+		849599D21DBDB6DD00B168D7 /* ComplaintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintModel.m; sourceTree = "<group>"; };
+		849599D41DBDE3A700B168D7 /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
+		849599D51DBDE3A700B168D7 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		84B640571D82A47D0017F4B0 /* MerchantCarmgr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerchantCarmgr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B6405B1D82A47E0017F4B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84B6405D1D82A47E0017F4B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -523,9 +535,9 @@
 		8435BE4C1DB478280000F630 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8435BF881DB761580000F630 /* 二级页面 */,
 				8435BE4F1DB4787A0000F630 /* WorkSpaceViewController.h */,
 				8435BE501DB4787A0000F630 /* WorkSpaceViewController.m */,
+				8435BF881DB761580000F630 /* 二级页面 */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -533,13 +545,14 @@
 		8435BE4D1DB478450000F630 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8435BF961DB773760000F630 /* 二级页面 */,
 				8435BEBB1DB4B1AB0000F630 /* ADScrollView.h */,
 				8435BEBC1DB4B1AB0000F630 /* ADScrollView.m */,
 				8435BEC51DB4CB1D0000F630 /* DataView.h */,
 				8435BEC61DB4CB1D0000F630 /* DataView.m */,
 				8435BECB1DB4DF170000F630 /* ClickView.h */,
 				8435BECC1DB4DF170000F630 /* ClickView.m */,
+				849599CA1DBDAC9000B168D7 /* Cell */,
+				8435BF961DB773760000F630 /* 二级页面 */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -549,6 +562,8 @@
 			children = (
 				8435BEC21DB4BAFF0000F630 /* WorkModel.h */,
 				8435BEC31DB4BAFF0000F630 /* WorkModel.m */,
+				849599D11DBDB6DD00B168D7 /* ComplaintModel.h */,
+				849599D21DBDB6DD00B168D7 /* ComplaintModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -583,9 +598,9 @@
 		8435BE551DB478A40000F630 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				849599B91DB9AF9F00B168D7 /* TableViewController */,
 				8435BE5E1DB479A40000F630 /* AppointmentViewController.h */,
 				8435BE5F1DB479A40000F630 /* AppointmentViewController.m */,
+				849599B91DB9AF9F00B168D7 /* TableViewController */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -593,11 +608,11 @@
 		8435BE561DB478AB0000F630 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8435BF671DB624AF0000F630 /* Cell */,
 				8435BF641DB61C480000F630 /* AppointSegmentControl.h */,
 				8435BF651DB61C480000F630 /* AppointSegmentControl.m */,
 				849599B61DB9AF8E00B168D7 /* AppointScrollView.h */,
 				849599B71DB9AF8E00B168D7 /* AppointScrollView.m */,
+				8435BF671DB624AF0000F630 /* Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -612,10 +627,10 @@
 		8435BE581DB478B80000F630 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8435BFA71DB8A0EA0000F630 /* 二级页面 */,
-				8435BF7E1DB7589C0000F630 /* TableViewController */,
 				8435BE611DB479B00000F630 /* MineViewController.h */,
 				8435BE621DB479B00000F630 /* MineViewController.m */,
+				8435BFA71DB8A0EA0000F630 /* 二级页面 */,
+				8435BF7E1DB7589C0000F630 /* TableViewController */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -623,11 +638,12 @@
 		8435BE591DB478BF0000F630 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8435BF7A1DB7129A0000F630 /* Cell */,
 				8435BF6B1DB62B9B0000F630 /* HeadView.h */,
 				8435BF6C1DB62B9B0000F630 /* HeadView.m */,
 				8435BF6E1DB706610000F630 /* WeekView.h */,
 				8435BF6F1DB706610000F630 /* WeekView.m */,
+				849599C81DBCAFD100B168D7 /* 二级页面 */,
+				8435BF7A1DB7129A0000F630 /* Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -702,6 +718,7 @@
 				8435BF8D1DB764710000F630 /* CommentViewController.m */,
 				8435BF8F1DB764D40000F630 /* ComplaintViewController.h */,
 				8435BF901DB764D40000F630 /* ComplaintViewController.m */,
+				849599C91DBDAC7A00B168D7 /* TableViewController */,
 			);
 			name = "二级页面";
 			sourceTree = "<group>";
@@ -718,8 +735,6 @@
 		8435BF961DB773760000F630 /* 二级页面 */ = {
 			isa = PBXGroup;
 			children = (
-				8435BF971DB77CAA0000F630 /* ReleaseTextView.h */,
-				8435BF981DB77CAA0000F630 /* ReleaseTextView.m */,
 			);
 			name = "二级页面";
 			sourceTree = "<group>";
@@ -763,6 +778,31 @@
 				849599BB1DB9B1BE00B168D7 /* AppointTableViewController.m */,
 			);
 			name = TableViewController;
+			sourceTree = "<group>";
+		};
+		849599C81DBCAFD100B168D7 /* 二级页面 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "二级页面";
+			sourceTree = "<group>";
+		};
+		849599C91DBDAC7A00B168D7 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				849599CB1DBDACB500B168D7 /* ComplaintTableViewController.h */,
+				849599CC1DBDACB600B168D7 /* ComplaintTableViewController.m */,
+			);
+			name = TableViewController;
+			sourceTree = "<group>";
+		};
+		849599CA1DBDAC9000B168D7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				849599CE1DBDAD3200B168D7 /* ComplaintTableViewCell.h */,
+				849599CF1DBDAD3200B168D7 /* ComplaintTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		84B6404E1D82A47D0017F4B0 = {
@@ -949,10 +989,14 @@
 		84B640C91D87E69A0017F4B0 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
+				8435BF971DB77CAA0000F630 /* CustomTextView.h */,
+				8435BF981DB77CAA0000F630 /* CustomTextView.m */,
 				84B640CD1D87E7A20017F4B0 /* CustomTextField.h */,
 				84B640CE1D87E7A20017F4B0 /* CustomTextField.m */,
 				84B640D01D8E27490017F4B0 /* UploadImageView.h */,
 				84B640D11D8E27490017F4B0 /* UploadImageView.m */,
+				849599D41DBDE3A700B168D7 /* CustomLabel.h */,
+				849599D51DBDE3A700B168D7 /* CustomLabel.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -1177,6 +1221,7 @@
 				8435BF761DB70DC30000F630 /* MineTableViewController.m in Sources */,
 				84B640BB1D879DD60017F4B0 /* InheritForLeagueViewController.m in Sources */,
 				841E60CE1D911DA8001BF053 /* HotCityTableViewCell.m in Sources */,
+				849599CD1DBDACB600B168D7 /* ComplaintTableViewController.m in Sources */,
 				84B640AE1D8699890017F4B0 /* MerchantEnterViewController.m in Sources */,
 				84B640C21D87A4230017F4B0 /* MerchantInfoViewController.m in Sources */,
 				8435BF701DB706610000F630 /* WeekView.m in Sources */,
@@ -1202,6 +1247,7 @@
 				841E60E21D92716C001BF053 /* SelectAreaTableViewController.m in Sources */,
 				8435BE661DB47D0B0000F630 /* BasicTabBarController.m in Sources */,
 				8435BF841DB75B1D0000F630 /* MineModel.m in Sources */,
+				849599D61DBDE3A700B168D7 /* CustomLabel.m in Sources */,
 				841E60BB1D8FC997001BF053 /* ChooseServiceModel.m in Sources */,
 				84B640B81D8797100017F4B0 /* CustomBarViewController.m in Sources */,
 				84B6409E1D82C8650017F4B0 /* InheritForEnterViewController.m in Sources */,
@@ -1212,11 +1258,13 @@
 				8435BE631DB479B00000F630 /* MineViewController.m in Sources */,
 				849599BF1DB9EDA400B168D7 /* MessageTableViewController.m in Sources */,
 				8435BE3E1DB464B00000F630 /* GeneralView.m in Sources */,
-				8435BF991DB77CAA0000F630 /* ReleaseTextView.m in Sources */,
+				8435BF991DB77CAA0000F630 /* CustomTextView.m in Sources */,
 				841E60C31D8FE948001BF053 /* ChineseToPinyin.m in Sources */,
+				849599D01DBDAD3200B168D7 /* ComplaintTableViewCell.m in Sources */,
 				8435BE511DB4787A0000F630 /* WorkSpaceViewController.m in Sources */,
 				849599B81DB9AF8E00B168D7 /* AppointScrollView.m in Sources */,
 				8435BFBF1DB8A8080000F630 /* MessageViewController.m in Sources */,
+				849599D31DBDB6DD00B168D7 /* ComplaintModel.m in Sources */,
 				841E60C91D90DBC8001BF053 /* SearchResultTableViewController.m in Sources */,
 				84B640C51D87A4360017F4B0 /* LeagueInfoViewController.m in Sources */,
 				84B640BF1D87A4030017F4B0 /* OperatorInfoViewController.m in Sources */,

@@ -7,12 +7,12 @@
 //
 
 #import "IntroduceViewController.h"
-#import "ReleaseTextView.h"
+#import "CustomTextView.h"
 #import "GeneralControl.h"
 
 @interface IntroduceViewController ()
 
-@property (nonatomic, strong) ReleaseTextView *textView;
+@property (nonatomic, strong) CustomTextView *textView;
 
 @end
 
@@ -31,7 +31,7 @@
 }
 
 - (void)initTextView {
-    self.textView = [[ReleaseTextView alloc] init];
+    self.textView = [[CustomTextView alloc] init];
     self.textView.placeholder = @"企业简介";
     [self.view addSubview:self.textView];
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {

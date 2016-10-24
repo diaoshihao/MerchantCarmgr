@@ -47,8 +47,9 @@
     return label;
 }
 
-+ (UITextField *)textFieldWithLabelText:(NSString *)text placeholder:(NSString *)placeholder {
++ (CustomTextField *)textFieldWithLabelText:(NSString *)text placeholder:(NSString *)placeholder {
     CustomTextField *textField = [[CustomTextField alloc] init];
+    textField.backgroundColor = [UIColor whiteColor];
     textField.placeholder = placeholder;
     textField.textColor = [DefineValue fieldColor];
     textField.font = [DefineValue font14];

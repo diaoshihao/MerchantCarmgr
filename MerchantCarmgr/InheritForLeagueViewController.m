@@ -58,8 +58,8 @@
     button.selected = YES;
 }
 
-- (UITextField *)customTextFieldWithSeparator:(NSString *)labelTitle placeholder:(NSString *)placeholder superView:(UIView *)superView {
-    UITextField *textField = [EnterView textFieldWithLabelText:labelTitle placeholder:placeholder];
+- (CustomTextField *)customTextFieldWithSeparator:(NSString *)labelTitle placeholder:(NSString *)placeholder superView:(UIView *)superView {
+    CustomTextField *textField = (CustomTextField *)[EnterView textFieldWithLabelText:labelTitle placeholder:placeholder];
     [superView addSubview:textField];
     
     [self separatorViewWithHeight:[DefineValue pixHeight] constraintsView:textField superView:superView];
