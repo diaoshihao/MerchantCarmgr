@@ -89,6 +89,10 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (void)addSwitchTo:(UITableViewCell *)cell {
     UISwitch *cellSwitch = [[UISwitch alloc] init];
     cellSwitch.on = YES;

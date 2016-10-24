@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ClickAt)(NSInteger tag);
+typedef void(^ClickAt)(NSInteger tag);//点击按钮的回调
 
 @interface ClickView : UIView
 

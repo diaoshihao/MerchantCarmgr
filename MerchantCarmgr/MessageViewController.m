@@ -31,9 +31,9 @@
 }
 
 - (void)loadData {
-    NSDictionary *dict = @{@"title":@"易务车宝V1.1在线升级啦",@"time":@"10月15日",@"iamgeUrl":@"呼叫背景@2x",@"subTitle":@"赶快看看我们更新了什么吧"};
+    NSDictionary *dict = @{@"title":@"易务车宝V1.1在线升级啦",@"time":@"10月15日",@"imageUrl":@"呼叫背景",@"subTitle":@"赶快看看我们更新了什么吧"};
     MessageModel *model = [[MessageModel alloc] initWithDict:dict];
-    self.dataArr = [NSMutableArray arrayWithObject:model];
+    self.dataArr = [NSMutableArray arrayWithObjects:model, model, nil];
 }
 
 - (void)initTableView {

@@ -44,6 +44,8 @@
 - (void)settingTableView {
     [self.tableView registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineCell"];
     self.tableView.backgroundColor = [DefineValue separaColor];
+    self.tableView.bounces = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.tableFooterView = [UIView new];
 }
 

@@ -6,14 +6,14 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
-#import "ReleaseTextView.h"
+#import "CustomTextView.h"
 #import "DefineValue.h"
 
-@interface ReleaseTextView() <UITextViewDelegate>
+@interface CustomTextView() <UITextViewDelegate>
 
 @end
 
-@implementation ReleaseTextView
+@implementation CustomTextView
 
 - (void)setPlaceholder:(NSString *)placeholder {
     _placeholder = placeholder;
@@ -24,6 +24,7 @@
 {
     self = [super init];
     if (self) {
+        [self settingParagraphStyle];
     }
     return self;
 }
@@ -33,7 +34,7 @@
     self.text = _placeholder;
     self.font = [DefineValue font15];
     self.delegate = self;
-    self.textContainerInset = UIEdgeInsetsMake(10, 20, 20, 20);
+    self.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);
     self.enablesReturnKeyAutomatically = YES;
 }
 
@@ -51,22 +52,24 @@
     }
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    [self setParagraphStyle];
-    return YES;
-}
-
-- (void)setParagraphStyle {
+- (void)settingParagraphStyle {
     //    textview 改变字体的行间距
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 10;// 字体的行间距
+    _paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    _paragraphStyle.lineSpacing = 10;// 字体的行间距
     
     NSDictionary *attributes = @{
                                  NSFontAttributeName:[DefineValue font15],
-                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 NSParagraphStyleAttributeName:_paragraphStyle
                                  };
     self.attributedText = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
 }
+
+- (void)setParagraphStyle:(NSMutableParagraphStyle *)paragraphStyle {
+    _paragraphStyle = paragraphStyle;
+    [self settingParagraphStyle];
+}
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

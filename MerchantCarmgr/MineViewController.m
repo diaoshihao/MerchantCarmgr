@@ -71,10 +71,11 @@
     MineTableViewController *tableViewController = [[MineTableViewController alloc] init];
     tableViewController.dataList = @[@"0.1",@"1"];
     
-    //点击进入下一页
+#pragma mark 点击cell的回调实现
     tableViewController.clickCell = ^(NSIndexPath *indexPath) {
         [self pushWithIndexPath:indexPath];
     };
+    
     [self addChildViewController:tableViewController];
     UITableView *tableView = tableViewController.tableView;
     [self.view addSubview:tableView];

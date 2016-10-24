@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MessageModel.h"
 
-typedef void(^Click)();
+typedef void(^Click)();//点击查看详情的回调
 
 @interface MessageTableViewCell : UITableViewCell
 
@@ -20,6 +20,6 @@ typedef void(^Click)();
 
 @property (nonatomic, strong) MessageModel *model;
 
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) Click click;
 
 @end

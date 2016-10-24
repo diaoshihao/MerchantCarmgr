@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReleaseTextView : UITextView
+@interface CustomTextView : UITextView
 
 @property (nonatomic, strong) NSString *placeholder;
+
+@property (nonatomic, strong) NSMutableParagraphStyle *paragraphStyle;
 
 @end
