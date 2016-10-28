@@ -10,4 +10,6 @@
 
 @interface WeekView : DataView
 
+@property (nonatomic, strong) NSArray *titles;
+
 @end

@@ -10,18 +10,15 @@
 
 typedef void(^DidScrollPage)(CGPoint offset);
 
-@interface AppointScrollView : UIScrollView
+@interface CustomScrollView : UIScrollView
 
-@property (nonatomic, strong) NSArray *allAppointArr;
+@property (nonatomic, strong) NSArray <UIView *>*views;
 
-@property (nonatomic, strong) NSArray *myAppointArr;
-
-@property (nonatomic, strong) NSArray *ongoingArr;
-
-@property (nonatomic, strong) NSArray *completedArr;
+@property (nonatomic, assign) CGSize singleSize;//single view's size
 
 @property (nonatomic, copy) DidScrollPage didScroll;
 
-- (void)loadData;
+- (instancetype)initWithViews:(NSArray *)views;
+
 
 @end

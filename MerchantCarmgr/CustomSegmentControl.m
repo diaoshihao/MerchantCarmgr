@@ -6,10 +6,10 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
-#import "AppointSegmentControl.h"
+#import "CustomSegmentControl.h"
 #import "DefineValue.h"
 
-@implementation AppointSegmentControl
+@implementation CustomSegmentControl
 
 - (instancetype)initWithItems:(NSArray *)items
 {

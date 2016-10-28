@@ -52,6 +52,15 @@
     }
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        self.returnBlock(textView.text);
+        textView.text = nil;
+        [self textViewDidEndEditing:textView];
+    }
+    return YES;
+}
+
 - (void)settingParagraphStyle {
     //    textview 改变字体的行间距
     _paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -68,7 +77,6 @@
     _paragraphStyle = paragraphStyle;
     [self settingParagraphStyle];
 }
-
 
 
 /*

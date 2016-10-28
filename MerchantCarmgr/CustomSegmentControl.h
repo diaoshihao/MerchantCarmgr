@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppointSegmentControl : UISegmentedControl
+@interface CustomSegmentControl : UISegmentedControl
 
 - (instancetype)initWithItems:(NSArray *)items;
 

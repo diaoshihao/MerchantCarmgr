@@ -45,7 +45,6 @@
     }];
     
     self.detailLabel = [[CustomLabel alloc] init];
-    self.detailLabel.numberOfLines = 0;
     self.detailLabel.lineSpace = 8;
     self.detailLabel.font = [DefineValue font14];
     

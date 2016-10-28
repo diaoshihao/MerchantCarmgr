@@ -7,7 +7,7 @@
 //
 
 #import "ComplaintViewController.h"
-#import "AppointSegmentControl.h"
+#import "CustomSegmentControl.h"
 #import "ComplaintTableViewController.h"
 #import "ComplaintModel.h"
 
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, DataState) {
 
 @interface ComplaintViewController ()
 
-@property (nonatomic, strong) AppointSegmentControl *segment;
+@property (nonatomic, strong) CustomSegmentControl *segment;
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, DataState) {
 
 - (void)initSegment {
     NSArray *items = @[@"未解决", @"已解决"];
-    self.segment = [[AppointSegmentControl alloc] initWithItems:items];
+    self.segment = [[CustomSegmentControl alloc] initWithItems:items];
     self.segment.frame = CGRectMake(0, 64, [DefineValue screenWidth], 44);
     self.segment.tintColor = [UIColor clearColor];
     self.segment.backgroundColor = [UIColor clearColor];
@@ -76,9 +76,10 @@ typedef NS_ENUM(NSUInteger, DataState) {
     ComplaintModel *model1 = [[ComplaintModel alloc] initWithDict:dict1];
     
     
-    self.dataArr = [NSMutableArray arrayWithObjects:model, model1, nil];
+    self.dataArr = [NSMutableArray arrayWithObjects:model, model, model, model,  model1, nil];
     
     [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 

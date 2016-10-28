@@ -14,8 +14,8 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Masonry (1.0.1)
-  - YYCache (1.0.3)
+  - Masonry (1.0.2)
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -24,8 +24,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
-  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: 7046d55d21573f4937a130dcd6520f76bf4f9d7b
 

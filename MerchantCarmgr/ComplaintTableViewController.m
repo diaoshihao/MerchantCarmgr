@@ -45,7 +45,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 4.99;
+    return 9.99;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,7 +54,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     ComplaintModel *model = self.dataArr[indexPath.section];
-    cell.headImageView.image = [UIImage imageNamed:model.imageUrl];
+    if (model.imageUrl != nil) {
+        cell.headImageView.image = [UIImage imageNamed:model.imageUrl];
+    }
     cell.userName.text = model.userName;
     cell.timeLabel.text = model.time;
     cell.detailLabel.text = model.text;

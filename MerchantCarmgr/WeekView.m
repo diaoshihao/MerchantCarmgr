@@ -14,9 +14,8 @@
 - (void)viewWithData:(NSArray *)data {
     CGFloat screenWidth = [DefineValue screenWidth];
     CGFloat width = screenWidth / 2 - [DefineValue pixHeight];
-    NSArray *titles = @[@"本周订单(单)",@"本周收入(元)"];
     for (NSInteger i = 0; i < 2; i++) {
-        UILabel *label = [self settingLabel:titles[i]];
+        UILabel *label = [self settingLabel:self.titles[i]];
         label.frame = CGRectMake((width + 2 * [DefineValue pixHeight]) * i, 0, width, 30);
         UILabel *dataLab = [self settingLabel:data[i]];
         dataLab.frame = CGRectMake((width + 2 * [DefineValue pixHeight]) * i, 25, width, 30);

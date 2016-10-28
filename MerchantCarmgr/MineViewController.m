@@ -63,6 +63,7 @@
 
 - (void)initWeekView {
     self.weekView = [[WeekView alloc] initWithFrame:CGRectMake(0, self.headView.frame.size.height + 4, [DefineValue screenWidth], 60)];
+    self.weekView.titles = @[@"本周订单(单)",@"本周收入(元)"];
     [self.weekView viewWithData:@[@"1000",@"8888"]];
     [self.view addSubview:self.weekView];
 }

@@ -7,14 +7,15 @@
 //
 
 #import "AppointmentViewController.h"
-#import "AppointSegmentControl.h"
-#import "AppointScrollView.h"
+#import "CustomSegmentControl.h"
+#import "CustomScrollView.h"
+#import "AppointTableViewController.h"
 
 @interface AppointmentViewController ()
 
-@property (nonatomic, strong) AppointSegmentControl *segment;
+@property (nonatomic, strong) CustomSegmentControl *segment;
 
-@property (nonatomic, strong) AppointScrollView *scrollView;
+@property (nonatomic, strong) CustomScrollView *scrollView;
 
 @end
 
@@ -39,7 +40,7 @@
 
 - (void)initSegmentControl {
     NSArray *items = @[@"全部",@"我的预约",@"进行中",@"已完成"];
-    self.segment = [[AppointSegmentControl alloc] initWithItems:items];
+    self.segment = [[CustomSegmentControl alloc] initWithItems:items];
     [self.segment addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.segment];
     [self.segment mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,8 +52,17 @@
 }
 
 - (void)initAppointPage {
-    self.scrollView = [[AppointScrollView alloc] init];
-    [self.scrollView loadData];
+    NSMutableArray *views = [NSMutableArray new];
+    for (NSInteger i = 0; i < self.segment.numberOfSegments; i++) {
+        AppointTableViewController *appointTVC = [[AppointTableViewController alloc] init];
+        UITableView *tableView = appointTVC.tableView;
+        [views addObject:tableView];
+    }
+    
+    self.scrollView = [[CustomScrollView alloc] initWithViews:views];
+    CGFloat height = [DefineValue screenHeight] - 64 - 44 - 49;
+    CGFloat width = [DefineValue screenWidth];
+    self.scrollView.singleSize = CGSizeMake(width, height);
     __weak typeof(self) weakSelf = self;
     self.scrollView.didScroll = ^(CGPoint offset) {
         [weakSelf selectSegmentIndex:offset];
