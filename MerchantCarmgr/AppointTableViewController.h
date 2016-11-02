@@ -12,6 +12,4 @@
 
 @property (nonatomic, strong) NSArray *dataArr;
 
-- (UITableView *)tableViewWithData:(NSArray *)data;
-
 @end

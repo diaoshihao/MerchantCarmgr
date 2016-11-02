@@ -11,6 +11,7 @@
 #import "CommentModel.h"
 
 typedef void(^ReloadData)(NSString *text);
+typedef void(^PhotoBroswer)(NSArray *images, NSUInteger index);
 
 @interface CommentTableViewCell : UITableViewCell
 
@@ -26,5 +27,6 @@ typedef void(^ReloadData)(NSString *text);
 @property (nonatomic, strong) CommentModel *model;
 
 @property (nonatomic, copy) ReloadData reload;
+@property (nonatomic, copy) PhotoBroswer broswer;
 
 @end

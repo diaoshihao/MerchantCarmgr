@@ -6,6 +6,10 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
+/**
+ * 基类
+ */
+
 #import <UIKit/UIKit.h>
 #import "DefineValue.h"
 #import <Masonry.h>

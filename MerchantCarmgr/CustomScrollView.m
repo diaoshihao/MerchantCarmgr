@@ -10,7 +10,7 @@
 #import "DefineValue.h"
 #import <Masonry.h>
 
-@interface CustomScrollView() <UIScrollViewDelegate>
+@interface CustomScrollView()
 
 @end
 
@@ -42,17 +42,25 @@
     }
 }
 
+//- (void)setTapAllow:(BOOL)tapAllow {
+//    _tapAllow = tapAllow;
+//    for (UIView *view in self.views) {
+//        view.userInteractionEnabled = tapAllow;
+//    }
+//}
+
 - (void)setting {
-    self.delegate = self;
     self.pagingEnabled = YES;
     self.showsVerticalScrollIndicator = NO;
     self.showsHorizontalScrollIndicator = NO;
     self.bounces = NO;
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)createViews {
     for (NSInteger i = 0; i < self.views.count; i++) {
         UIView *view = self.views[i];
+//        view.frame = CGRectMake(self.intrinsicContentSize.width * i, 0, self.intrinsicContentSize.width, self.intrinsicContentSize.height);
         [self addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);
@@ -64,9 +72,11 @@
     self.contentSize = CGSizeMake(self.singleSize.width * self.views.count, 0);
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.didScroll(scrollView.contentOffset);
-}
+//- (void)viewDidTap:(UITapGestureRecognizer *)tap {
+//    UIView *view = tap.view;
+//    NSUInteger index = [self.views indexOfObject:view];
+//    self.didTap(index);
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

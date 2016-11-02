@@ -11,8 +11,9 @@
 #import "CustomSegmentControl.h"
 #import "CustomScrollView.h"
 #import "CommentModel.h"
+#import "PhotoBroswerController.h"
 
-@interface CommentViewController ()
+@interface CommentViewController () <ImageBroswerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) CustomSegmentControl *segment;
 
@@ -70,18 +71,16 @@
         CommentTableViewController *commentTVC = [[CommentTableViewController alloc] init];
         [self addChildViewController:commentTVC];
         commentTVC.dataArr = [NSMutableArray arrayWithArray:self.dataArr[i]];
+        commentTVC.broswerDelegate = self;
         UITableView *tableView = commentTVC.tableView;
         [views addObject:tableView];
     }
     
     self.scrollView = [[CustomScrollView alloc] initWithViews:views];
+    self.scrollView.delegate = self;
     CGFloat height = [DefineValue screenHeight] - 64 - 44;
     CGFloat width = [DefineValue screenWidth];
     self.scrollView.singleSize = CGSizeMake(width, height);
-    __weak typeof(self) weakSelf = self;
-    self.scrollView.didScroll = ^(CGPoint offset) {
-        [weakSelf selectSegmentIndex:offset];
-    };
     [self.view addSubview:self.scrollView];
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.segment.mas_bottom);
@@ -89,6 +88,21 @@
         make.bottom.mas_equalTo(0);
     }];
 }
+
+#pragma mark - broswer delegate
+- (void)showBroserAtIndex:(NSUInteger)index In:(NSArray *)images {
+    PhotoBroswerController *broswerController = [[PhotoBroswerController alloc] init];
+    broswerController.imageArr = images;
+    broswerController.index = index;
+//    [self.navigationController pushViewController:broswerController animated:YES];
+    [self presentViewController:broswerController animated:NO completion:nil];
+}
+
+#pragma mark - scrollview delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self selectSegmentIndex:scrollView.contentOffset];
+}
+
 
 - (void)selectAction:(UISegmentedControl *)sender {
     [self scrollToOffset:sender.selectedSegmentIndex];

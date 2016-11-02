@@ -72,16 +72,9 @@
     [self.contentView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(separator2.mas_bottom);
-        make.left.mas_equalTo(self.contentView.mas_left).offset(20);
+        make.left.and.right.mas_equalTo(0);
         make.height.mas_equalTo(44);
-        make.bottom.mas_equalTo(0);
-    }];
-    
-    UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"前进橙"]];
-    [self.contentView addSubview:indicator];
-    [indicator mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.contentView.mas_right).offset(-20);
-        make.centerY.mas_equalTo(button);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
     
 }
@@ -102,7 +95,15 @@
     [button setTitle:@"点击查看详情" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [button addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"前进橙"]];
+    [button addSubview:indicator];
+    [indicator mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(button.mas_right).offset(-20);
+        make.centerY.mas_equalTo(button);
+    }];
     return button;
 }
 

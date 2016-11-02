@@ -10,21 +10,39 @@
 #import "CustomSegmentControl.h"
 #import "CustomScrollView.h"
 #import "AppointTableViewController.h"
+#import "AppointModel.h"
 
-@interface AppointmentViewController ()
+@interface AppointmentViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) CustomSegmentControl *segment;
 
 @property (nonatomic, strong) CustomScrollView *scrollView;
 
+@property (nonatomic, strong) NSMutableArray *dataArr;
+
 @end
 
 @implementation AppointmentViewController
+
+- (void)loadData {
+    NSDictionary *dict = @{@"state":@"0",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
+    NSDictionary *dict1 = @{@"state":@"1",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
+    NSDictionary *dict2 = @{@"state":@"2",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
+    AppointModel *model = [[AppointModel alloc] initWithDict:dict];
+    AppointModel *model1 = [[AppointModel alloc] initWithDict:dict1];
+    AppointModel *model2 = [[AppointModel alloc] initWithDict:dict2];
+    NSArray *all = @[model,model1,model2];
+    NSArray *my = @[model];
+    NSArray *doing = @[model1];
+    NSArray *done = @[model2];
+    self.dataArr = [NSMutableArray arrayWithArray:@[all,my,doing,done]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self baseSetting];
+    [self loadData];
     [self showPage];
 }
 
@@ -55,24 +73,27 @@
     NSMutableArray *views = [NSMutableArray new];
     for (NSInteger i = 0; i < self.segment.numberOfSegments; i++) {
         AppointTableViewController *appointTVC = [[AppointTableViewController alloc] init];
+        appointTVC.dataArr = self.dataArr[i];
         UITableView *tableView = appointTVC.tableView;
+        [self addChildViewController:appointTVC];
         [views addObject:tableView];
     }
     
     self.scrollView = [[CustomScrollView alloc] initWithViews:views];
+    self.scrollView.delegate = self;
     CGFloat height = [DefineValue screenHeight] - 64 - 44 - 49;
     CGFloat width = [DefineValue screenWidth];
     self.scrollView.singleSize = CGSizeMake(width, height);
-    __weak typeof(self) weakSelf = self;
-    self.scrollView.didScroll = ^(CGPoint offset) {
-        [weakSelf selectSegmentIndex:offset];
-    };
     [self.view addSubview:self.scrollView];
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.segment.mas_bottom);
         make.left.and.right.mas_equalTo(0);
         make.bottom.mas_equalTo(-49);
     }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self selectSegmentIndex:scrollView.contentOffset];
 }
 
 - (void)selectAction:(UISegmentedControl *)sender {

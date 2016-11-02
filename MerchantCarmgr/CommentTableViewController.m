@@ -63,9 +63,11 @@
     
     CommentModel *model = self.dataArr[indexPath.section];
     cell.model = model;
-    NSLog(@"%@",model.answers.lastObject);
     cell.reload = ^(NSString *text) {
         [self uploadReply:text indexPath:indexPath];
+    };
+    cell.broswer = ^(NSArray *images, NSUInteger index) {
+        [self.broswerDelegate showBroserAtIndex:index In:images];
     };
     return cell;
 }
@@ -84,6 +86,7 @@
     
     //reload data of the row
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

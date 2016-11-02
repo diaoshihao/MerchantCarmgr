@@ -18,7 +18,11 @@
 @property (nonatomic, strong) CustomTextView *reply;
 @property (nonatomic, strong) UIImageView *lastImageView;//评论图片
 @property (nonatomic, strong) UIView *lastView;//最后一个view，用于约束
+
+@property (nonatomic, strong) MASConstraint *topConstrain;
 @property (nonatomic, strong) MASConstraint *bottomConstrain;
+
+@property (nonatomic, strong) NSMutableArray *imageViews;
 
 @end
 
@@ -71,7 +75,7 @@
     self.reply = [self createAnswerTextView];
     [self.contentView addSubview:self.reply];
     [self.reply mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.commentLab.mas_bottom).offset(15);
+        self.topConstrain = make.top.mas_equalTo(self.commentLab.mas_bottom).offset(15);
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(30);
@@ -103,7 +107,9 @@
 }
 
 - (void)insertImages {
+    [self.topConstrain uninstall];
     
+    self.imageViews = [NSMutableArray new];
     for (NSInteger i = 0; i < _images.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.image = [UIImage imageNamed:_images[i]];
@@ -113,18 +119,35 @@
             make.top.mas_equalTo(self.commentLab.mas_bottom).offset(15);
             make.left.mas_equalTo(20 + (50 + 10) * i);
             make.width.and.height.mas_equalTo(50);
+            make.bottom.mas_equalTo(self.reply.mas_top).offset(-15);
         }];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageDidTap:)];
+        [imageView addGestureRecognizer:tap];
+        imageView.userInteractionEnabled = YES;
+        
         self.lastImageView = imageView;
+        [self.imageViews addObject:imageView];
     }
     
     [self.reply mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.lastImageView.mas_bottom).offset(15);
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(30);
         self.bottomConstrain = make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(-10);
     }];
+    [self layoutIfNeeded];
+}
+
+//点击查看图片
+- (void)imageDidTap:(UITapGestureRecognizer *)tap {
+    UIImageView *imageView = (UIImageView *)tap.view;
+    NSUInteger index = [self.imageViews indexOfObject:imageView];
     
+    NSMutableArray *images = [NSMutableArray new];
+    for (UIImageView *imageV in self.imageViews) {
+        [images addObject:imageV.image];
+    }
+    self.broswer(images, index);
 }
 
 - (void)initAnswers {
@@ -147,31 +170,7 @@
         
         self.lastView = answerLab;//最后一个view是商家回复
     }
-}
-
-//给回复block的内部调用
-- (void)insertAnswer:(NSString *)text {
-    [self.answers addObject:text]; //cell重用时将回复也展示出来
-    
-    //delete lastView's constraint of bottom
-    [self.bottomConstrain uninstall];
-    
-    UIView *answerLab = [self createAnswerLabel:text];
-    [self.contentView addSubview:answerLab];
-    [answerLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        if (self.lastView == self.reply) {
-            make.top.mas_equalTo(self.lastView.mas_bottom).offset(10);
-        } else {
-            make.top.mas_equalTo(self.lastView.mas_bottom).offset(5);
-        }
-        make.left.mas_equalTo(20);
-        make.right.mas_equalTo(-20);
-        self.bottomConstrain = make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(-10);
-    }];
-    self.lastView = answerLab;
-    
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
+    [self layoutIfNeeded];
 }
 
 - (void)addStarsWithScore:(CGFloat)score {
@@ -203,10 +202,8 @@
     answerLab.font = [DefineValue font12];
     [back addSubview:answerLab];
     [answerLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.left.mas_equalTo(5);
-        make.right.mas_equalTo(-5);
-        make.bottom.mas_equalTo(back.mas_bottom).offset(-5);
+        make.edges.mas_equalTo(UIEdgeInsetsMake(5, 5, 5, 5));
+//        make.bottom.mas_equalTo(back.mas_bottom).offset(-5);
     }];
     return back;
 }
@@ -223,7 +220,6 @@
     __weak typeof(self) weakSelf = self;
     textView.returnBlock = ^(NSString *text) {//商家回复block
         [[UIApplication sharedApplication].keyWindow endEditing:YES];
-//        [weakSelf insertAnswer:text];
         weakSelf.reload(text);
     };
     return textView;

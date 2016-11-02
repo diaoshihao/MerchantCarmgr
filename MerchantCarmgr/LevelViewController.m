@@ -7,8 +7,11 @@
 //
 
 #import "LevelViewController.h"
+#import "LevelView.h"
 
 @interface LevelViewController ()
+
+@property (nonatomic, strong) LevelView *levelView;
 
 @end
 
@@ -17,6 +20,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"商家等级";
+    [self showPage];
+}
+
+- (void)showPage {
+    [self initView];
+}
+
+- (void)initView {
+    self.levelView = [[LevelView alloc] init];
+    self.levelView.grade = 2;
+    self.levelView.positive = 100;
+    self.levelView.nextLevel = 20;
+    [self.view addSubview:self.levelView];
+    [self.levelView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.customNavBar.mas_bottom);
+        make.left.and.right.mas_equalTo(0);
+    }];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitleColor:[DefineValue buttonColor] forState:UIControlStateNormal];
+    [button setTitle:@"等级说明" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.levelView.mas_bottom).offset(10);
+        make.left.mas_equalTo(20);
+    }];
+}
+
+- (void)click {
+    
 }
 
 - (void)didReceiveMemoryWarning {
