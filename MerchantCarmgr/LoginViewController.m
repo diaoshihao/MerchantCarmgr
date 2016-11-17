@@ -7,7 +7,14 @@
 //
 
 #import "LoginViewController.h"
+#import "TabBarController.h"
 #import "FindPasswordViewController.h"
+#import "Interface.h"
+#import "ViewController.h"
+#import "UIViewController+ShowView.h"
+#import "LeagueParentViewController.h"
+#import "AudittingViewController.h"
+
 
 @interface LoginViewController ()
 
@@ -21,10 +28,109 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setting];
+    [self initAndLayoutView];
+}
+
+- (void)login {
+    if (self.usernameField.text.length == 0 || self.passwordField.text.length == 0) {
+        [self showAlertMessage:@"用户名和密码不能为空"];
+        return;
+    }
+    UIView *progressHUD = [self loading:@"正在登录..."];
+    self.view.userInteractionEnabled = NO;
+    NSArray *login = [Interface mapplogin:self.usernameField.text password:self.passwordField.text type:@"0" verf_code:@"" uuid:@""];
+    [MyNetworker POST:login[InterfaceUrl] parameters:login[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        self.view.userInteractionEnabled = YES;
+        
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            //判断审核状态
+            if ([responseObject[@"user_private"] isEqualToString:@"Audited"]) {
+                [self showHomePage];
+            } else if ([responseObject[@"user_private"] isEqualToString:@"Auditting"]) {
+                [self showAudittingPage];
+            } else {
+                [self showLeaguePage];
+            }
+            //存储用户名和密码
+            [[NSUserDefaults standardUserDefaults] setValue:self.usernameField.text forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setValue:self.passwordField.text forKey:@"password"];
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"token"] forKey:@"token"];
+        } else {
+            [self showAlertMessage:@"用户名或密码错误"];
+        }
+    } failure:^(NSError *error) {
+        [progressHUD removeFromSuperview];
+        self.view.userInteractionEnabled = YES;
+        [self connectError];
+    }];
+}
+
+//showHomePage
+- (void)showHomePage {
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    //remove childVC
+    for (UIViewController *child in rootVC.childViewControllers) {
+        [child removeFromParentViewController];
+    }
+    //showHomePage
+    ViewController *VC = (ViewController *)rootVC;
+    [UIView animateWithDuration:0.5 animations:^{
+        [VC showHomePage];
+    }];
+}
+
+//showLeaguePage
+- (void)showLeaguePage {
+    LeagueParentViewController *leagueParentVC = [[LeagueParentViewController alloc] init];
+    [self.navigationController pushViewController:leagueParentVC animated:YES];
+}
+
+//showAudittingPage
+- (void)showAudittingPage {
+    AudittingViewController *audittingVC = [[AudittingViewController alloc] init];
+    [self.navigationController pushViewController:audittingVC animated:YES];
+}
+
+//(联系我们)拨打电话
+- (void)contactUs {
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:400-111-9665"]]];
+    [self.view addSubview:callWebview];
+}
+
+- (void)findPassword {
+    FindPasswordViewController *findVC = [[FindPasswordViewController alloc] init];
+    [self.navigationController pushViewController:findVC animated:YES];
+}
+
+///////////////////////////////////////////////////////////////////////
+
+- (void)setting {
     self.title = @"登录";
     self.usernameField.placeholder = @"请输入账号";
     self.passwordField.placeholder = @"请输入密码";
-    [self initAndLayoutView];
+    self.usernameField.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    self.passwordField.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
+    self.passwordField.secureTextEntry = YES;
+    self.passwordField.rightViewMode = UITextFieldViewModeAlways;
+    self.passwordField.rightView = [self rightView];
+}
+
+- (UIButton *)rightView {
+    UIButton *eye = [UIButton buttonWithType:UIButtonTypeCustom];
+    eye.frame = CGRectMake(0, 0, 44, 44);
+    [eye setImage:[UIImage imageNamed:@"password_unlook"] forState:UIControlStateNormal];
+    [eye setImage:[UIImage imageNamed:@"password_look"] forState:UIControlStateSelected];
+    [eye addTarget:self action:@selector(lookPassword:) forControlEvents:UIControlEventTouchUpInside];
+    return eye;
+}
+
+- (void)lookPassword:(UIButton *)sender {
+    self.passwordField.secureTextEntry = sender.selected;
+    sender.selected = !sender.selected;
 }
 
 - (UIButton *)createButton:(NSString *)title selector:(SEL)action {
@@ -46,6 +152,7 @@
     }];
     
     UIButton *loginButton = [Public loginTypeButton:@"登录"];
+    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
     [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.contactBtn.mas_bottom).mas_equalTo(0);
@@ -64,21 +171,6 @@
     
 }
 
-//拨打电话
-- (void)callUs {
-    UIWebView *callWebview = [[UIWebView alloc] init];
-    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:400-111-9665"]]];
-    [self.view addSubview:callWebview];
-}
-
-- (void)contactUs {
-    [self callUs];
-}
-
-- (void)findPassword {
-    FindPasswordViewController *findVC = [[FindPasswordViewController alloc] init];
-    [self.navigationController pushViewController:findVC animated:YES];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

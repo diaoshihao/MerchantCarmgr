@@ -15,18 +15,21 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Masonry (1.0.2)
+  - TZImagePickerController (1.6.7)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - Masonry (~> 1.0.1)
+  - TZImagePickerController (~> 1.6.7)
   - YYCache (~> 1.0.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  TZImagePickerController: d3b16a1ab3393b251a23fbb22ac2d6bc83a50d5f
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 7046d55d21573f4937a130dcd6520f76bf4f9d7b
+PODFILE CHECKSUM: 84976299ae56228e39747e97c8f93ca734504567
 
 COCOAPODS: 1.0.1

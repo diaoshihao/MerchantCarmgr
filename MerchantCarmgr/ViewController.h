@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Interface.h"
 
 @interface ViewController : UIViewController
+
+- (void)showGuidePage;
+
+- (void)showHomePage;
+
+- (void)showLoginPage;
 
 
 @end

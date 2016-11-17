@@ -73,7 +73,6 @@
 		845ED31B1DC7231E0033F26F /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845ED31A1DC7231E0033F26F /* LevelView.m */; };
 		845ED31E1DC751FC0033F26F /* AppointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 845ED31D1DC751FC0033F26F /* AppointModel.m */; };
 		845ED3211DC879010033F26F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845ED31F1DC879010033F26F /* Main.storyboard */; };
-		845ED3251DC882920033F26F /* PhotoBroswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845ED3241DC882920033F26F /* PhotoBroswerController.m */; };
 		849599B81DB9AF8E00B168D7 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599B71DB9AF8E00B168D7 /* CustomScrollView.m */; };
 		849599BC1DB9B1BE00B168D7 /* AppointTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599BB1DB9B1BE00B168D7 /* AppointTableViewController.m */; };
 		849599BF1DB9EDA400B168D7 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849599BE1DB9EDA400B168D7 /* MessageTableViewController.m */; };
@@ -115,6 +114,12 @@
 		84B640D21D8E27490017F4B0 /* UploadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640D11D8E27490017F4B0 /* UploadImageView.m */; };
 		84B640D81D8E3F910017F4B0 /* PPNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640D51D8E3F910017F4B0 /* PPNetworkCache.m */; };
 		84B640D91D8E3F910017F4B0 /* PPNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B640D71D8E3F910017F4B0 /* PPNetworkHelper.m */; };
+		84F7623E1DD4109C00549408 /* Interface.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F7623D1DD4109C00549408 /* Interface.m */; };
+		84F762421DD423E800549408 /* MyNetworker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F762411DD423E800549408 /* MyNetworker.m */; };
+		84F762491DD576E000549408 /* UIViewController+ShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F762481DD576E000549408 /* UIViewController+ShowView.m */; };
+		84F7624D1DD5CCBE00549408 /* AudittingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F7624C1DD5CCBE00549408 /* AudittingViewController.m */; };
+		84F762501DDAA92C00549408 /* PhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F7624F1DDAA92C00549408 /* PhotoPreviewController.m */; };
+		84F762531DDAAAFF00549408 /* PreviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F762521DDAAAFF00549408 /* PreviewCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,8 +263,6 @@
 		845ED31C1DC751FC0033F26F /* AppointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointModel.h; sourceTree = "<group>"; };
 		845ED31D1DC751FC0033F26F /* AppointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointModel.m; sourceTree = "<group>"; };
 		845ED3201DC879010033F26F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		845ED3231DC882920033F26F /* PhotoBroswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBroswerController.h; sourceTree = "<group>"; };
-		845ED3241DC882920033F26F /* PhotoBroswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBroswerController.m; sourceTree = "<group>"; };
 		849599B61DB9AF8E00B168D7 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
 		849599B71DB9AF8E00B168D7 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
 		849599BA1DB9B1BE00B168D7 /* AppointTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointTableViewController.h; sourceTree = "<group>"; };
@@ -342,6 +345,18 @@
 		84B640D51D8E3F910017F4B0 /* PPNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkCache.m; sourceTree = "<group>"; };
 		84B640D61D8E3F910017F4B0 /* PPNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNetworkHelper.h; sourceTree = "<group>"; };
 		84B640D71D8E3F910017F4B0 /* PPNetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkHelper.m; sourceTree = "<group>"; };
+		84F7623C1DD4109C00549408 /* Interface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interface.h; sourceTree = "<group>"; };
+		84F7623D1DD4109C00549408 /* Interface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interface.m; sourceTree = "<group>"; };
+		84F762401DD423E800549408 /* MyNetworker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNetworker.h; sourceTree = "<group>"; };
+		84F762411DD423E800549408 /* MyNetworker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNetworker.m; sourceTree = "<group>"; };
+		84F762471DD576E000549408 /* UIViewController+ShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowView.h"; sourceTree = "<group>"; };
+		84F762481DD576E000549408 /* UIViewController+ShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowView.m"; sourceTree = "<group>"; };
+		84F7624B1DD5CCBE00549408 /* AudittingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudittingViewController.h; sourceTree = "<group>"; };
+		84F7624C1DD5CCBE00549408 /* AudittingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudittingViewController.m; sourceTree = "<group>"; };
+		84F7624E1DDAA92C00549408 /* PhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPreviewController.h; sourceTree = "<group>"; };
+		84F7624F1DDAA92C00549408 /* PhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPreviewController.m; sourceTree = "<group>"; };
+		84F762511DDAAAFF00549408 /* PreviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCollectionViewCell.h; sourceTree = "<group>"; };
+		84F762521DDAAAFF00549408 /* PreviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionViewCell.m; sourceTree = "<group>"; };
 		88F2D261E00FD3FC57637772 /* libPods-MerchantCarmgr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MerchantCarmgr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -816,8 +831,10 @@
 		845ED3221DC8824D0033F26F /* 图片浏览 */ = {
 			isa = PBXGroup;
 			children = (
-				845ED3231DC882920033F26F /* PhotoBroswerController.h */,
-				845ED3241DC882920033F26F /* PhotoBroswerController.m */,
+				84F7624E1DDAA92C00549408 /* PhotoPreviewController.h */,
+				84F7624F1DDAA92C00549408 /* PhotoPreviewController.m */,
+				84F762511DDAAAFF00549408 /* PreviewCollectionViewCell.h */,
+				84F762521DDAAAFF00549408 /* PreviewCollectionViewCell.m */,
 			);
 			name = "图片浏览";
 			sourceTree = "<group>";
@@ -902,9 +919,10 @@
 			children = (
 				8435BE4B1DB477D90000F630 /* 页面 */,
 				8435BE911DB4A97F0000F630 /* Images */,
+				84F7623F1DD4238500549408 /* libs */,
 				84B640981D82C1C30017F4B0 /* util */,
-				84B640941D82B5EE0017F4B0 /* Main */,
 				84B6408D1D82AC830017F4B0 /* 登录和入驻 */,
+				84B640941D82B5EE0017F4B0 /* Main */,
 				84B6405A1D82A47E0017F4B0 /* Supporting Files */,
 			);
 			path = MerchantCarmgr;
@@ -973,6 +991,8 @@
 			children = (
 				84B640911D82AD690017F4B0 /* EnterViewController.h */,
 				84B640921D82AD690017F4B0 /* EnterViewController.m */,
+				84F7624B1DD5CCBE00549408 /* AudittingViewController.h */,
+				84F7624C1DD5CCBE00549408 /* AudittingViewController.m */,
 				84B640B51D8796C60017F4B0 /* 继承控制器 */,
 				84B6408E1D82ACAE0017F4B0 /* 登录 */,
 				84B6408F1D82ACB60017F4B0 /* 入驻 */,
@@ -996,14 +1016,16 @@
 		84B640981D82C1C30017F4B0 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				84F7623B1DD4103B00549408 /* 后台接口 */,
 				845ED3221DC8824D0033F26F /* 图片浏览 */,
 				849599DA1DBF0F9900B168D7 /* 直方图 */,
 				841E60DC1D9218F2001BF053 /* 定位城市 */,
 				8435BF9D1DB85D080000F630 /* 图片选择 */,
 				84B640C91D87E69A0017F4B0 /* 自定义控件 */,
 				841E60CB1D9111C7001BF053 /* Source */,
-				84B640D31D8E3F910017F4B0 /* PPNetworkHelper */,
 				8435BE361DB45DA80000F630 /* Public */,
+				84F762431DD423EE00549408 /* 网络请求 */,
+				84F7624A1DD576E500549408 /* 类别 */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -1086,6 +1108,41 @@
 				84B640D71D8E3F910017F4B0 /* PPNetworkHelper.m */,
 			);
 			path = PPNetworkHelper;
+			sourceTree = "<group>";
+		};
+		84F7623B1DD4103B00549408 /* 后台接口 */ = {
+			isa = PBXGroup;
+			children = (
+				84F7623C1DD4109C00549408 /* Interface.h */,
+				84F7623D1DD4109C00549408 /* Interface.m */,
+			);
+			name = "后台接口";
+			sourceTree = "<group>";
+		};
+		84F7623F1DD4238500549408 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				84B640D31D8E3F910017F4B0 /* PPNetworkHelper */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		84F762431DD423EE00549408 /* 网络请求 */ = {
+			isa = PBXGroup;
+			children = (
+				84F762401DD423E800549408 /* MyNetworker.h */,
+				84F762411DD423E800549408 /* MyNetworker.m */,
+			);
+			name = "网络请求";
+			sourceTree = "<group>";
+		};
+		84F7624A1DD576E500549408 /* 类别 */ = {
+			isa = PBXGroup;
+			children = (
+				84F762471DD576E000549408 /* UIViewController+ShowView.h */,
+				84F762481DD576E000549408 /* UIViewController+ShowView.m */,
+			);
+			name = "类别";
 			sourceTree = "<group>";
 		};
 		9AC1C68E87FA87E61A4DDE73 /* Pods */ = {
@@ -1343,6 +1400,7 @@
 				849599BF1DB9EDA400B168D7 /* MessageTableViewController.m in Sources */,
 				8435BE3E1DB464B00000F630 /* GeneralView.m in Sources */,
 				8435BF991DB77CAA0000F630 /* CustomTextView.m in Sources */,
+				84F7623E1DD4109C00549408 /* Interface.m in Sources */,
 				841E60C31D8FE948001BF053 /* ChineseToPinyin.m in Sources */,
 				849599D01DBDAD3200B168D7 /* ComplaintTableViewCell.m in Sources */,
 				8435BE511DB4787A0000F630 /* WorkSpaceViewController.m in Sources */,
@@ -1356,13 +1414,14 @@
 				8435BE601DB479A40000F630 /* AppointmentViewController.m in Sources */,
 				8435BF5E1DB611640000F630 /* RightButton.m in Sources */,
 				849599BC1DB9B1BE00B168D7 /* AppointTableViewController.m in Sources */,
+				84F7624D1DD5CCBE00549408 /* AudittingViewController.m in Sources */,
 				841E60D11D913027001BF053 /* CurrentCityTableViewCell.m in Sources */,
 				8435BFA01DB8647C0000F630 /* PhotoManager.m in Sources */,
 				84B640A71D8648550017F4B0 /* LoginViewController.m in Sources */,
 				8435BF811DB759DF0000F630 /* WeekModel.m in Sources */,
 				84B640971D82B62D0017F4B0 /* TabBarController.m in Sources */,
-				845ED3251DC882920033F26F /* PhotoBroswerController.m in Sources */,
 				8435BE431DB4687C0000F630 /* GeneralControl.m in Sources */,
+				84F762531DDAAAFF00549408 /* PreviewCollectionViewCell.m in Sources */,
 				8425E34B1DA8A066008F8C3D /* GuidePageViewController.m in Sources */,
 				8435BFB61DB8A7960000F630 /* BailViewController.m in Sources */,
 				8435BE461DB470430000F630 /* BasicNavigationController.m in Sources */,
@@ -1377,6 +1436,9 @@
 				84B640D81D8E3F910017F4B0 /* PPNetworkCache.m in Sources */,
 				8435BEC41DB4BAFF0000F630 /* WorkModel.m in Sources */,
 				8435BF941DB76A7E0000F630 /* SecondaryViewController.m in Sources */,
+				84F762491DD576E000549408 /* UIViewController+ShowView.m in Sources */,
+				84F762421DD423E800549408 /* MyNetworker.m in Sources */,
+				84F762501DDAA92C00549408 /* PhotoPreviewController.m in Sources */,
 				845ED31B1DC7231E0033F26F /* LevelView.m in Sources */,
 				8435BF911DB764D40000F630 /* ComplaintViewController.m in Sources */,
 				8435BE5D1DB4798E0000F630 /* IssueViewController.m in Sources */,

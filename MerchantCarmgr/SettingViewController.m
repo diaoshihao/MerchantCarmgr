@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "GeneralControl.h"
+#import "ViewController.h"
 
 @interface SettingViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,6 +60,7 @@
     [logout setTitle:@"退出当前帐号" forState:UIControlStateNormal];
     [logout setTitleColor:[DefineValue buttonColor] forState:UIControlStateNormal];
     logout.layer.cornerRadius = 6;
+    [logout addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     return logout;
 }
 
@@ -106,7 +108,14 @@
 }
 
 - (void)logout {
-    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    //remove childVC
+    for (UIViewController *child in rootVC.childViewControllers) {
+        [child removeFromParentViewController];
+    }
+    //showLoginPage
+    ViewController *VC = (ViewController *)rootVC;
+    [VC showLoginPage];
 }
 
 - (void)switchAction:(UISwitch *)sender {

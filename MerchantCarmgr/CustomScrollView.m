@@ -42,13 +42,6 @@
     }
 }
 
-//- (void)setTapAllow:(BOOL)tapAllow {
-//    _tapAllow = tapAllow;
-//    for (UIView *view in self.views) {
-//        view.userInteractionEnabled = tapAllow;
-//    }
-//}
-
 - (void)setting {
     self.pagingEnabled = YES;
     self.showsVerticalScrollIndicator = NO;

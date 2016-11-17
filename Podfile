@@ -5,4 +5,5 @@ target 'MerchantCarmgr' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'YYCache', '~> 1.0.3'
   pod 'Masonry', '~> 1.0.1'
+  pod 'TZImagePickerController', '~> 1.6.7'
 end

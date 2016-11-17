@@ -7,16 +7,29 @@
 //
 
 #import "MyPhotoViewController.h"
+#import "Interface.h"
 #import "GeneralControl.h"
+#import <TZImagePickerController.h>
+#import "PhotoPreviewController.h"
 
-@interface MyPhotoViewController ()
+@interface MyPhotoViewController () <TZImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, strong) UILabel *tipsLabel;
 
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *assets;
+
 @end
 
 @implementation MyPhotoViewController
+
+- (NSMutableArray *)photos {
+    if (_photos == nil) {
+        _photos = [NSMutableArray new];
+    }
+    return _photos;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,17 +99,33 @@
 
 //选择图片
 - (void)pickPhotos {
-    
+    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto) {
+        [self.photos addObjectsFromArray:photos];
+        [self.assets addObjectsFromArray:assets];
+//        [self addImagesFromPicker:self.photos];
+    }];
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 //上传图片
 - (void)uploadPhotos {
-    
+    NSArray *upload = [Interface mappfileupload:self.photos fileType:@"jpeg"];
+    [MyNetworker POST:upload[InterfaceUrl] parameters:upload[Parameters] success:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 //预览图片
 - (void)previewPhotos {
-    
+    if (self.photos.count == 0) {
+        return;
+    }
+    PhotoPreviewController *previewVC = [[PhotoPreviewController alloc] init];
+    previewVC.photos = self.photos;
+    [self.navigationController pushViewController:previewVC animated:YES];
 }
 
 

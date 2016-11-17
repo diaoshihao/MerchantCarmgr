@@ -25,10 +25,15 @@
     [self.window makeKeyAndVisible];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (void)baseSetting {
+    //开启网络监听
+    [PPNetworkHelper startMonitoringNetwork];
+    //textView初始化，防止后面第一次使用textview时造成页面卡顿
     textView = [[UITextView alloc] init];
-//    [self setRootViewController];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self baseSetting];
     return YES;
 }
 

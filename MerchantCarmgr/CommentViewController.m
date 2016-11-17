@@ -11,7 +11,7 @@
 #import "CustomSegmentControl.h"
 #import "CustomScrollView.h"
 #import "CommentModel.h"
-#import "PhotoBroswerController.h"
+#import "PhotoPreviewController.h"
 
 @interface CommentViewController () <ImageBroswerDelegate, UIScrollViewDelegate>
 
@@ -91,11 +91,11 @@
 
 #pragma mark - broswer delegate
 - (void)showBroserAtIndex:(NSUInteger)index In:(NSArray *)images {
-    PhotoBroswerController *broswerController = [[PhotoBroswerController alloc] init];
-    broswerController.imageArr = images;
-    broswerController.index = index;
-//    [self.navigationController pushViewController:broswerController animated:YES];
-    [self presentViewController:broswerController animated:NO completion:nil];
+    PhotoPreviewController *previewController = [[PhotoPreviewController alloc] init];
+    previewController.photos = images;
+    previewController.currentIndex = index;
+    previewController.animated = NO;
+    [self.navigationController pushViewController:previewController animated:NO];
 }
 
 #pragma mark - scrollview delegate

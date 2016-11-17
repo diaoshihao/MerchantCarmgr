@@ -235,6 +235,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //当前城市cell
     if (indexPath.section == 0) {
         CurrentCityTableViewCell *cell = [[CurrentCityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"currentcitycell"];
         if (cell == nil) {
@@ -249,6 +250,8 @@
             [self.areaTableView removeFromSuperview];
         };
         return cell;
+        
+        //热门城市cell
     } else if (indexPath.section == 1) {
         HotCityTableViewCell *cell = [[HotCityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hotcitycell" hotCitys:self.hotCitys];
         if (cell == nil) {
@@ -269,6 +272,8 @@
             [self.areaTableView removeFromSuperview];
         };
         return cell;
+        
+        //普通cell
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         if (cell == nil) {
@@ -295,6 +300,7 @@
     NSArray *citys = [self.cityDict objectForKey:self.titleArray[indexPath.section]];
     NSString *city = citys[indexPath.row];
     
+    //县级市
     if ([[city substringFromIndex:city.length - 1] isEqualToString:@"县"]) {
         self.rightItemButton.hidden = NO;
         self.currentCity = city;
