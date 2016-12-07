@@ -26,4 +26,6 @@
 
 @property (nonatomic, strong) UIColor *backColor;
 
+@property (nonatomic, assign) BOOL allowGesture;
+
 @end

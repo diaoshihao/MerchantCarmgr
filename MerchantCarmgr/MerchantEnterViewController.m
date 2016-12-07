@@ -66,12 +66,12 @@
         return;
     }
     UIView *progressHUD = [self loading:@"正在发送..."];
-    self.view.userInteractionEnabled = NO;
+    self.allowGesture = NO;//禁止交互和手势
     self.uuid = [Interface uuid];
     NSArray *verf = [Interface appsendverfcode:self.phoneNumField.text type:@"0" uuid:self.uuid];
     [MyNetworker POST:verf[InterfaceUrl] parameters:verf[Parameters] success:^(id responseObject) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        self.allowGesture = YES;//打开交互和手势
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             [self startTimer];
         } else if ([responseObject[@"opt_info"] isEqualToString:@"user account is already exist"]) {
@@ -79,7 +79,7 @@
         }
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        self.allowGesture = YES;//打开交互和手势
         [self connectError];
     }];
 }
@@ -103,9 +103,11 @@
         return;
     }
     UIView *progressHUD = [self loading:@"正在注册..."];
+    self.allowGesture = NO;//禁止交互和手势
     NSArray *regist = [Interface mappregister:self.usernameField.text password:self.passwordField.text mobile:self.phoneNumField.text verf_code:self.verifyCodeField.text];
     [MyNetworker POST:regist[InterfaceUrl] parameters:regist[Parameters] success:^(id responseObject) {
         [progressHUD removeFromSuperview];
+        self.allowGesture = YES;//打开交互和手势
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             [self pushToNextStep];
         } else if ([responseObject[@"opt_info"] isEqualToString:@"user account is already exist"]) {
@@ -113,6 +115,7 @@
         }
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
+        self.allowGesture = YES;//打开交互和手势
         [self connectError];
     }];
 }
@@ -204,7 +207,7 @@
         make.height.mas_equalTo(44);
     }];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"成功"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"已选择"]];
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(enterButton.mas_bottom).offset(20);

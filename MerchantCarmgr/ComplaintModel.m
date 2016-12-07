@@ -14,12 +14,24 @@
 {
     self = [super init];
     if (self) {
-        self.imageUrl = dict[@"imageUrl"];
-        self.userName = dict[@"userName"];
-        self.time = dict[@"time"];
-        self.text = dict[@"text"];
+        [self setValuesForKeysWithDictionary:dict];
     }
     return self;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key {
+    if ([value isKindOfClass:[NSNull class]]) {
+        return;
+    }
+    if ([value isEqualToString:@"null"]) {
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
+//对未定义key处理
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    
 }
 
 @end

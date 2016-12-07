@@ -172,7 +172,7 @@ typedef void(^NetworkStatus)(PPNetworkStatus status);
                                   parameters:(NSDictionary *)parameters
                                       images:(NSArray<UIImage *> *)images
                                         name:(NSString *)name
-                                    fileName:(NSString *)fileName
+                                    fileName:(NSArray<NSString *> *)fileName
                                     mimeType:(NSString *)mimeType
                                     progress:(HttpProgress)progress
                                      success:(HttpRequestSuccess)success

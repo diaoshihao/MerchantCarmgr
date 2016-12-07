@@ -9,6 +9,7 @@
 #import "IssueViewController.h"
 #import "IssueLabel.h"
 #import "RightButton.h"
+#import "Interface.h"
 
 #import "ReleaseViewController.h"
 
@@ -50,17 +51,22 @@
 }
 
 //判断用户是否有发布
-- (BOOL)userHasIssue {
-    return NO;
+- (void)loadData {
+    NSArray *pubedservice = [Interface mappgetpubedservice];
+    [MyNetworker POST:pubedservice[InterfaceUrl] parameters:pubedservice[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            
+        } else {
+            [self showEmptyIssue];
+        }
+    } failure:^(NSError *error) {
+        [self showEmptyIssue];
+    }];
 }
 
 //根据有无发布内容显示页面
 - (void)showPage {
-    if ([self userHasIssue]) {
-        [self showIssuePage];
-    } else {
-        [self showEmptyIssue];
-    }
+    [self loadData];
 }
 
 //无发布页面

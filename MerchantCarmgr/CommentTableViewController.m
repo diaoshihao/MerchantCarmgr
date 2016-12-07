@@ -63,11 +63,13 @@
     
     CommentModel *model = self.dataArr[indexPath.section];
     cell.model = model;
+    
+    __weak typeof(self) weakSelf = self;
     cell.reload = ^(NSString *text) {
-        [self uploadReply:text indexPath:indexPath];
+        [weakSelf uploadReply:text indexPath:indexPath];
     };
     cell.broswer = ^(NSArray *images, NSUInteger index) {
-        [self.broswerDelegate showBroserAtIndex:index In:images];
+        [weakSelf.broswerDelegate showBroserAtIndex:index In:images];
     };
     return cell;
 }

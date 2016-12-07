@@ -10,13 +10,6 @@
 
 @implementation DefineValue
 
-
-- (struct Screen)screen {
-    _screen.width = [UIScreen mainScreen].bounds.size.width;
-    _screen.height = [UIScreen mainScreen].bounds.size.height;
-    return _screen;
-}
-
 + (UIColor *)mainColor {
     return [UIColor colorWithRed:255/255.0 green:167/255.0 blue:0 alpha:1];
 }

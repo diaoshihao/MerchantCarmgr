@@ -16,14 +16,20 @@
     //不设置👇，参数无法传到服务器，为null(已在PPNetworkHelper的初始化中修改)
 //    [PPNetworkHelper setRequestSerializer:PPRequestSerializerHTTP];
     
-    return [PPNetworkHelper POST:URL parameters:parameters success:success failure:failure];
+//    return [PPNetworkHelper POST:URL parameters:parameters success:success failure:failure];
+    
+    return [PPNetworkHelper POST:URL parameters:parameters success:^(id responseObject) {
+        success(responseObject);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
 }
 
 + (NSURLSessionTask *)POST:(NSString *)URL parameters:(NSDictionary *)parameters responseCache:(HttpRequestCache)responseCache success:(HttpRequestSuccess)success failure:(HttpRequestFailed)failure {
     return [PPNetworkHelper POST:URL parameters:parameters responseCache:responseCache success:success failure:failure];
 }
 
-+ (NSURLSessionTask *)uploadWithURL:(NSString *)URL parameters:(NSDictionary *)parameters images:(NSArray<UIImage *> *)images name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progress:(HttpProgress)progress success:(HttpRequestSuccess)success failure:(HttpRequestFailed)failure {
++ (NSURLSessionTask *)uploadWithURL:(NSString *)URL parameters:(NSDictionary *)parameters images:(NSArray<UIImage *> *)images name:(NSString *)name fileName:(NSArray<NSString *> *)fileName mimeType:(NSString *)mimeType progress:(HttpProgress)progress success:(HttpRequestSuccess)success failure:(HttpRequestFailed)failure {
     
     return [PPNetworkHelper uploadWithURL:URL parameters:parameters images:images name:name fileName:fileName mimeType:mimeType progress:progress success:success failure:failure];
 }

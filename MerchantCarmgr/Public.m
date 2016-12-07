@@ -10,6 +10,19 @@
 
 @implementation Public
 
++ (void)loadWebImage:(NSString *)imageUrl didLoad:(void (^)(UIImage * _Nonnull))block {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *image = nil;
+        NSError *error;
+        NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl] options:NSDataReadingMappedIfSafe error:&error];
+        image = [UIImage imageWithData:responseData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(image);
+        });
+    });
+}
+
 + (UITextField *)twoSpaceTextField:(NSString *)placeholder {
     UITextField *textField = [[UITextField alloc] init];
     textField.placeholder = placeholder;

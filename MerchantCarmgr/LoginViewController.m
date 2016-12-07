@@ -39,11 +39,11 @@
         return;
     }
     UIView *progressHUD = [self loading:@"正在登录..."];
-    self.view.userInteractionEnabled = NO;
+    self.allowGesture = NO;//禁止交互和手势
     NSArray *login = [Interface mapplogin:self.usernameField.text password:self.passwordField.text type:@"0" verf_code:@"" uuid:@""];
     [MyNetworker POST:login[InterfaceUrl] parameters:login[Parameters] success:^(id responseObject) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        self.allowGesture = YES;//打开交互和手势
         
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             //判断审核状态
@@ -63,7 +63,7 @@
         }
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        self.allowGesture = YES;//打开交互和手势
         [self connectError];
     }];
 }

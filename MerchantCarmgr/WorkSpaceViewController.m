@@ -69,7 +69,7 @@
 
 - (void)loadImages {
     model = [[WorkModel alloc] init];
-    model.ADImages = @[@"呼叫背景",@"呼叫背景",@"呼叫背景"];
+    model.ADImages = @[@"首页大图"];
 }
 
 - (void)initScrollView {

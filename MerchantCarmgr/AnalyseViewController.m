@@ -7,7 +7,9 @@
 //
 
 #import "AnalyseViewController.h"
+#import "AnalyseModel.h"
 #import "AnalyseView.h"
+#import "Interface.h"
 
 @interface AnalyseViewController ()
 
@@ -15,14 +17,31 @@
 
 @property (nonatomic, strong) UIView *contentView;
 
+@property (nonatomic, strong) NSArray *dataArr;
+
+@property (nonatomic, strong) AnalyseView *analyse;
+
 @end
 
 @implementation AnalyseViewController
+
+- (void)loadData {
+    NSArray *analyse = [Interface mappgetstatisticsData_time:@""];
+    [MyNetworker POST:analyse[InterfaceUrl] parameters:analyse[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            AnalyseModel *model = [[AnalyseModel alloc] initWithDict:responseObject];
+            self.analyse.dataArr = @[@[model.total_subscribe,model.total_access,model.total_communicate],@[model.day_total_subscribe,model.month_total_subscribe],@[model.day_total_order,model.month_total_order],@[model.fatch_cash_total,model.account_balance],@[model.evaluate_start_1,model.evaluate_start_2,model.evaluate_start_3,model.evaluate_start_4,model.evaluate_start_5]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"数据统计";
+    [self loadData];
     [self showPage];
 }
 
@@ -48,11 +67,10 @@
 }
 
 - (void)addViews {
-    AnalyseView *analyse = [[AnalyseView alloc] init];
-    analyse.dataArr = @[@[@"345",@"1000",@"789"],@[@"1000",@"1000"],@[@"1000",@"1000"],@[@"1000",@"1000"],@[@"123",@"475",@"1000",@"566",@"3400"]];
-    [self.contentView addSubview:analyse];
+    self.analyse = [[AnalyseView alloc] init];
+    [self.contentView addSubview:self.analyse];
     
-    [analyse mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.analyse mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.left.and.right.mas_equalTo(0);
         make.bottom.mas_equalTo(self.contentView.mas_bottom);

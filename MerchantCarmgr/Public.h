@@ -15,6 +15,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//异步加载图片
++ (void)loadWebImage:(NSString *)imageUrl didLoad:(void(^)(UIImage *image))block;
+
 /**
  * 创建缩进两格的TextField
  */

@@ -86,23 +86,23 @@
 }
 
 - (void)setModel:(CommentModel *)model {
-    if (model.headImage != nil) {
-        self.headImageView.image = [UIImage imageNamed:model.headImage];
+    if (model.custom_header_img != nil) {
+        self.headImageView.image = [UIImage imageNamed:model.custom_header_img];
     }
-    self.userNameLab.text = model.userName;
-    self.timeLab.text = model.time;
-    self.commentLab.text = model.comment;
-    self.images = model.images;
-    self.score = [model.score floatValue];
+    self.userNameLab.text = model.custom_username;
+    self.timeLab.text = model.advise_date;
+    self.commentLab.text = model.advise_content;
+    self.images = model.advise_img_list;
+    self.score = [model.advise_star floatValue];
     self.answers = [NSMutableArray arrayWithArray:model.answers];
     [self addStarsWithScore:self.score];
     
-    if (self.images.count != 0) {
-        [self insertImages];
+    if (self.images == nil || self.images.count != 0) {
+//        [self insertImages];
     }
     
     if (self.answers.count != 0) {
-        [self initAnswers];
+//        [self initAnswers];
     }
 }
 
@@ -203,7 +203,6 @@
     [back addSubview:answerLab];
     [answerLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsMake(5, 5, 5, 5));
-//        make.bottom.mas_equalTo(back.mas_bottom).offset(-5);
     }];
     return back;
 }

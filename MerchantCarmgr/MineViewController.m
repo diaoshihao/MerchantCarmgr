@@ -70,7 +70,7 @@
 
 - (void)initMineTableView {
     MineTableViewController *tableViewController = [[MineTableViewController alloc] init];
-    tableViewController.dataList = @[@"0.1",@"1"];
+    tableViewController.dataList = @[@"0.1",@"3"];
     
 #pragma mark 点击cell的回调实现
     tableViewController.clickCell = ^(NSIndexPath *indexPath) {

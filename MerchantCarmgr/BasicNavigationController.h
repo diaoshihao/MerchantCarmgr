@@ -10,6 +10,4 @@
 
 @interface BasicNavigationController : UINavigationController
 
-@property (nonatomic, assign) BOOL isPushing;
-
 @end

@@ -10,12 +10,12 @@
 
 @interface CommentModel : NSObject
 
-@property (nonatomic, strong) NSString *headImage;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSString *score;
-@property (nonatomic, strong) NSString *time;
-@property (nonatomic, strong) NSString *comment;
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSString *custom_header_img;
+@property (nonatomic, strong) NSString *custom_username;
+@property (nonatomic, strong) NSString *advise_star;
+@property (nonatomic, strong) NSString *advise_date;
+@property (nonatomic, strong) NSString *advise_content;
+@property (nonatomic, strong) NSArray *advise_img_list;
 @property (nonatomic, strong) NSArray *answers;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

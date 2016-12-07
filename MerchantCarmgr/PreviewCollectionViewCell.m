@@ -45,7 +45,7 @@
         [self addSubview:_scrollView];
         
         _imageContainerView = [[UIView alloc] init];
-        _imageContainerView.backgroundColor = [UIColor clearColor];
+        _imageContainerView.backgroundColor = [UIColor blackColor];
         _imageContainerView.clipsToBounds = YES;
         [_scrollView addSubview:_imageContainerView];
         [_imageContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,16 +53,14 @@
         }];
         
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor clearColor];
+        _imageView.backgroundColor = [UIColor blackColor];
         _imageView.clipsToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_imageContainerView addSubview:_imageView];
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero);
-            make.top.and.left.mas_equalTo(0);
             make.width.mas_equalTo(_width);
             make.height.mas_equalTo(_height);
-            make.bottom.mas_equalTo(_imageContainerView);
         }];
         
         UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
@@ -105,10 +103,10 @@
     return _imageContainerView;
 }
 
-//- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-//    CGFloat offsetX = (scrollView.tz_width > scrollView.contentSize.width) ? (scrollView.tz_width - scrollView.contentSize.width) * 0.5 : 0.0;
-//    CGFloat offsetY = (scrollView.tz_height > scrollView.contentSize.height) ? (scrollView.tz_height - scrollView.contentSize.height) * 0.5 : 0.0;
-//    self.imageContainerView.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX, scrollView.contentSize.height * 0.5 + offsetY);
-//}
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    CGFloat offsetX = (scrollView.frame.size.width > scrollView.contentSize.width) ? (scrollView.frame.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    CGFloat offsetY = (scrollView.frame.size.height > scrollView.contentSize.height) ? (scrollView.frame.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    self.imageContainerView.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX, scrollView.contentSize.height * 0.5 + offsetY);
+}
 
 @end

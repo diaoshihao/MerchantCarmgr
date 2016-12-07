@@ -10,6 +10,7 @@
 #import "CustomSegmentControl.h"
 #import "ComplaintTableViewController.h"
 #import "ComplaintModel.h"
+#import "Interface.h"
 
 typedef NS_ENUM(NSUInteger, DataState) {
     ToDo = 0,//未解决
@@ -20,7 +21,9 @@ typedef NS_ENUM(NSUInteger, DataState) {
 
 @property (nonatomic, strong) CustomSegmentControl *segment;
 
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *toDoArr;
+@property (nonatomic, strong) NSMutableArray *doneArr;
 
 @property (nonatomic, strong) ComplaintTableViewController *complaintTVC;
 @property (nonatomic, strong) UITableView *tableView;
@@ -29,11 +32,44 @@ typedef NS_ENUM(NSUInteger, DataState) {
 
 @implementation ComplaintViewController
 
+- (NSMutableArray *)toDoArr {
+    if (_toDoArr == nil) {
+        _toDoArr = [NSMutableArray new];
+    }
+    return _toDoArr;
+}
+
+- (NSMutableArray *)doneArr {
+    if (_doneArr == nil) {
+        _doneArr = [NSMutableArray new];
+    }
+    return _doneArr;
+}
+
+- (void)loadData {
+    NSArray *complaint = [Interface mappgetcomplaint];
+    [MyNetworker POST:complaint[InterfaceUrl] parameters:complaint[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            ComplaintModel *model = [[ComplaintModel alloc] initWithDict:responseObject];
+            if ([model.complaint_finish integerValue] == 0) {
+                [self.doneArr addObject:model];
+            } else {
+                [self.toDoArr addObject:model];
+            }
+            self.dataArr = @[self.toDoArr, self.doneArr];
+            [self showPage];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"投诉处理";
-    [self showPage];
+    [self loadData];
+    
 }
 
 - (void)showPage {
@@ -54,7 +90,7 @@ typedef NS_ENUM(NSUInteger, DataState) {
 
 - (void)settingTableView {
     self.complaintTVC = [[ComplaintTableViewController alloc] init];
-    self.complaintTVC.dataArr = self.dataArr;
+    self.complaintTVC.dataArr = self.toDoArr;
     [self addChildViewController:self.complaintTVC];
     self.tableView = self.complaintTVC.tableView;
     self.tableView.frame = CGRectMake(0, 108, [DefineValue screenWidth], [DefineValue screenHeight] - 108);
@@ -70,16 +106,12 @@ typedef NS_ENUM(NSUInteger, DataState) {
 }
 
 - (void)loadData:(DataState)state {
-    NSDictionary *dict = @{@"userName":@"易务车宝",@"time":@"10月15日",@"imageUrl":@"默认头像",@"text":@"赶快赶快看看我赶快看看我们更新了什么吧们更新了什么吧看看我们更赶快看赶快看看我赶快看看我们更新了什么吧们更新了什么吧看我们更新赶快看看我们更新了什么吧了什么吧新了赶快看看我们更新了什么吧什么吧"};
-    ComplaintModel *model = [[ComplaintModel alloc] initWithDict:dict];
-    NSDictionary *dict1 = @{@"userName":@"易务车宝",@"time":@"10月16日",@"imageUrl":@"默认头像",@"text":@"赶快赶快看看我赶快看看我们更新了什么吧们更新了什么吧看看我们更赶快看赶快看看我赶快看看我们么吧"};
-    ComplaintModel *model1 = [[ComplaintModel alloc] initWithDict:dict1];
-    
-    
-    self.dataArr = [NSMutableArray arrayWithObjects:model, model, model, model,  model1, nil];
-    
+    self.complaintTVC.dataArr = self.dataArr[state];
     [self.tableView reloadData];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    //如果数据为0，不能执行以下方法，否则crash
+    if (self.complaintTVC.dataArr.count != 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 

@@ -30,7 +30,7 @@
 
 - (void)initView {
     self.levelView = [[LevelView alloc] init];
-    self.levelView.grade = 2;
+    self.levelView.grade = 3;
     self.levelView.positive = 100;
     self.levelView.nextLevel = 20;
     [self.view addSubview:self.levelView];
@@ -42,7 +42,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitleColor:[DefineValue buttonColor] forState:UIControlStateNormal];
     [button setTitle:@"等级说明" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(levelExplanation) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.levelView.mas_bottom).offset(10);
@@ -50,7 +50,7 @@
     }];
 }
 
-- (void)click {
+- (void)levelExplanation {
     
 }
 

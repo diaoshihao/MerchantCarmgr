@@ -12,9 +12,10 @@
 #import "EnterView.h"
 #import "ChooseServiceViewController.h"
 #import <TZImagePickerController.h>
-#import <TZPhotoPreviewController.h>
+#import "PhotoPreviewController.h"
 #import "UIViewController+ShowView.h"
 #import "Interface.h"
+#import <Photos/PHAsset.h>
 
 @interface ReleaseViewController () <TZImagePickerControllerDelegate>
 {
@@ -42,7 +43,7 @@
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) NSMutableArray *photos;//photos did pick
-@property (nonatomic, strong) NSMutableArray *assets;
+@property (nonatomic, strong) NSMutableArray *photosName;
 
 @end
 
@@ -55,11 +56,11 @@
     return _photos;
 }
 
-- (NSMutableArray *)assets {
-    if (_assets == nil) {
-        _assets = [NSMutableArray new];
+- (NSMutableArray *)photosName {
+    if (_photosName == nil) {
+        _photosName = [NSMutableArray new];
     }
-    return _assets;
+    return _photosName;
 }
 
 - (void)viewDidLoad {
@@ -194,7 +195,7 @@
 
 - (void)initReleaseButton {
     UIButton *release = [GeneralControl loginTypeButton:@"发布"];
-    [release addTarget:self action:@selector(releaseAction) forControlEvents:UIControlEventTouchUpInside];
+    [release addTarget:self action:@selector(releaseService) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:release];
     [release mas_makeConstraints:^(MASConstraintMaker *make) {
         UITextField *textField = self.textFields.lastObject;
@@ -213,10 +214,19 @@
     TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
     [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto) {
         [self.photos addObjectsFromArray:photos];
-        [self.assets addObjectsFromArray:assets];
+        for (PHAsset *asset in assets) {
+            [self.photosName addObject:[self stringWithDate:asset.creationDate]];
+        }
         [self addImagesFromPicker:self.photos];
     }];
     [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+//将日期转为NSString     如果不设置格式，返回null  setDateFormat
+- (NSString *)stringWithDate:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [formatter stringFromDate:date];
 }
 
 //把选取的图片加到页面
@@ -258,14 +268,15 @@
 
 //点击进入图片预览
 - (void)previewPhotos:(UITapGestureRecognizer *)tap {
-    TZPhotoPreviewController *PhotoPreview = [[TZPhotoPreviewController alloc] init];
-    PhotoPreview.photos = self.photos;
-    PhotoPreview.models = self.assets;
     UIImageView *imageView = (UIImageView *)tap.view;
+    PhotoPreviewController *PhotoPreview = [[PhotoPreviewController alloc] init];
+    PhotoPreview.photos = self.photos;
+    PhotoPreview.animated = NO;
     PhotoPreview.currentIndex = [self.photos indexOfObject:imageView.image];
-    [self.navigationController pushViewController:PhotoPreview animated:YES];
+    [self.navigationController pushViewController:PhotoPreview animated:NO];
 }
 
+//选择服务
 - (void)chooseServiceAction {
     ChooseServiceViewController *chooseServiceVC = [[ChooseServiceViewController alloc] init];
     chooseServiceVC.serviceBlock = ^(NSArray *services) {
@@ -275,23 +286,64 @@
     [self.navigationController pushViewController:chooseServiceVC animated:YES];
 }
 
-- (void)releaseAction {
-    if (![self allDone]) {
+/**
+ * 发布服务之前先上传图片获取图片路径
+ * 路径返回后作为其中一个参数请求发布服务内容
+ */
+- (void)releaseService {
+    if (![self allDone]) {//信息不完整
         return;
     }
+    
+    if (self.photos.count == 0) {//不添加图片
+        [self releaseContentText:@""];
+    } else {
+        [self uploadImage];//先完成上传图片
+    }
+}
 
-    NSArray *release = [Interface mapppubservicesName:self.titleTextField.text detail:self.detailTextField.text price:self.priceTextField.text type:self.chooseService.currentTitle scope:self.scopeTextField.text imgpath:@""];
+//上传图片
+- (void)uploadImage {
+    UIView *progressHUD = [self loading:@"正在上传图片"];
+    self.view.userInteractionEnabled = NO;
+    NSArray *upload = [Interface mappupload:self.photos.count imageType:Service_introduce_img];
+    [MyNetworker uploadWithURL:upload[InterfaceUrl] parameters:upload[Parameters] images:self.photos name:@"file" fileName:self.photosName mimeType:@"jpeg" progress:^(NSProgress *progress) {
+        
+    } success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        self.view.userInteractionEnabled = YES;
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            //获取图片路径
+            NSMutableArray *imagepaths = [NSMutableArray new];
+            for (NSDictionary *dict in responseObject[@"file_store_list"]) {
+                [imagepaths addObject:dict[@"store_path"]];
+            }
+            //如果有多个图片路径，用^将imagepath拼接起来作为参数
+            NSString *imagepath = [imagepaths componentsJoinedByString:@"^"];
+            //发布服务
+            [self releaseContentText:imagepath];
+        }
+        
+    } failure:^(NSError *error) {
+        [progressHUD removeFromSuperview];
+        self.view.userInteractionEnabled = YES;
+    }];
+}
+
+//发布服务
+- (void)releaseContentText:(NSString *)imagepath {
+    NSArray *release = [Interface mapppubservicesName:self.titleTextField.text detail:self.detailTextField.text price:self.priceTextField.text type:self.chooseService.currentTitle scope:self.scopeTextField.text imgpath:imagepath];
     
     UIView *progressHUD = [self loading:@"正在发布"];
     self.view.userInteractionEnabled = NO;
     [MyNetworker POST:release[InterfaceUrl] parameters:release[Parameters] success:^(id responseObject) {
-        NSLog(@"url:%@,%@",release[InterfaceUrl],release[Parameters]);
         [progressHUD removeFromSuperview];
         self.view.userInteractionEnabled = YES;
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             [self success:@"发布成功" dismiss:2];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
-            [self showAlertMessage:@"发布失败，请检查"];
+            [self showAlertMessage:@"发布失败，请重试"];
         }
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
@@ -300,6 +352,7 @@
     }];
 }
 
+//判断信息完整度
 - (BOOL)allDone {
     if (self.titleTextField.text.length == 0 || self.detailTextField.text.length == 0 || self.priceTextField.text.length == 0 || self.scopeTextField.text.length == 0 || [self.chooseService.currentTitle isEqualToString:@"选择"]) {
         [self showAlertMessage:@"信息不全，请填写完整后再试"];

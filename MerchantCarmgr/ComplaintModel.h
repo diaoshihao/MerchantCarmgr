@@ -10,10 +10,11 @@
 
 @interface ComplaintModel : NSObject
 
-@property (nonatomic, strong) NSString *imageUrl;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSString *time;
-@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *custom_header_img;
+@property (nonatomic, strong) NSString *custom_username;
+@property (nonatomic, strong) NSString *complaint_date;
+@property (nonatomic, strong) NSString *complaint_content;
+@property (nonatomic, strong) NSString *complaint_finish;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 

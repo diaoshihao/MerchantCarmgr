@@ -9,6 +9,7 @@
 #import "ComplaintTableViewController.h"
 #import "ComplaintTableViewCell.h"
 #import "ComplaintModel.h"
+#import "Public.h"
 
 @interface ComplaintTableViewController ()
 
@@ -54,12 +55,14 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     ComplaintModel *model = self.dataArr[indexPath.section];
-    if (model.imageUrl != nil) {
-        cell.headImageView.image = [UIImage imageNamed:model.imageUrl];
+    if (model.custom_header_img != nil) {
+        [Public loadWebImage:model.custom_header_img didLoad:^(UIImage * _Nonnull image) {
+            cell.headImageView.image = image;
+        }];
     }
-    cell.userName.text = model.userName;
-    cell.timeLabel.text = model.time;
-    cell.detailLabel.text = model.text;
+    cell.userName.text = model.custom_username;
+    cell.timeLabel.text = model.complaint_date;
+    cell.detailLabel.text = model.complaint_content;
     
     return cell;
 }

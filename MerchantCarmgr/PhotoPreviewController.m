@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.animated = YES;
     [self configCollectionView];
     [self configPageControl];
 }

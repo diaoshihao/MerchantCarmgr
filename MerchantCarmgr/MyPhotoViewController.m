@@ -11,6 +11,7 @@
 #import "GeneralControl.h"
 #import <TZImagePickerController.h>
 #import "PhotoPreviewController.h"
+#import <Photos/PHAsset.h>
 
 @interface MyPhotoViewController () <TZImagePickerControllerDelegate>
 
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) UILabel *tipsLabel;
 
 @property (nonatomic, strong) NSMutableArray *photos;
-@property (nonatomic, strong) NSMutableArray *assets;
+@property (nonatomic, strong) NSMutableArray *photosName;
 
 @end
 
@@ -29,6 +30,13 @@
         _photos = [NSMutableArray new];
     }
     return _photos;
+}
+
+- (NSMutableArray *)photosName {
+    if (_photosName == nil) {
+        _photosName = [NSMutableArray new];
+    }
+    return _photosName;
 }
 
 - (void)viewDidLoad {
@@ -99,19 +107,31 @@
 
 //选择图片
 - (void)pickPhotos {
-    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:3 delegate:self];
     [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos,NSArray *assets,BOOL isSelectOriginalPhoto) {
+        [self.photos removeAllObjects];
+        [self.photosName removeAllObjects];
         [self.photos addObjectsFromArray:photos];
-        [self.assets addObjectsFromArray:assets];
-//        [self addImagesFromPicker:self.photos];
+        for (PHAsset *asset in assets) {
+            [self.photosName addObject:[self stringWithDate:asset.creationDate]];
+        }
     }];
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+//将日期转为NSString
+- (NSString *)stringWithDate:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [formatter stringFromDate:date];
+}
+
 //上传图片
 - (void)uploadPhotos {
-    NSArray *upload = [Interface mappfileupload:self.photos fileType:@"jpeg"];
-    [MyNetworker POST:upload[InterfaceUrl] parameters:upload[Parameters] success:^(id responseObject) {
+    NSArray *upload = [Interface mappupload:self.photos.count imageType:Merchants_introduce_img];
+    [MyNetworker uploadWithURL:upload[InterfaceUrl] parameters:upload[Parameters] images:self.photos name:@"file" fileName:self.photosName mimeType:@"jpeg" progress:^(NSProgress *progress) {
+        
+    } success:^(id responseObject) {
         
     } failure:^(NSError *error) {
         
@@ -125,6 +145,7 @@
     }
     PhotoPreviewController *previewVC = [[PhotoPreviewController alloc] init];
     previewVC.photos = self.photos;
+    previewVC.animated = YES;
     [self.navigationController pushViewController:previewVC animated:YES];
 }
 

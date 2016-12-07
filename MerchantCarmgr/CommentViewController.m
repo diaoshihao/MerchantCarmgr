@@ -12,6 +12,7 @@
 #import "CustomScrollView.h"
 #import "CommentModel.h"
 #import "PhotoPreviewController.h"
+#import "Interface.h"
 
 @interface CommentViewController () <ImageBroswerDelegate, UIScrollViewDelegate>
 
@@ -19,18 +20,24 @@
 
 @property (nonatomic, strong) CustomScrollView *scrollView;
 
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSArray *dataArr;
 
 @end
 
 @implementation CommentViewController
+
+- (NSMutableArray *)dataArr {
+    if (_dataArr == nil) {
+        _dataArr = [NSMutableArray new];
+    }
+    return _dataArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"用户评价";
     [self loadData];
-    [self showPage];
 }
 
 - (void)showPage {
@@ -39,15 +46,48 @@
 }
 
 - (void)loadData {
-    CommentModel *model = [[CommentModel alloc] init];
-    model.userName = @"123456789";
-    model.images = @[@"发布管理附图",@"发布管理附图",@"发布管理附图"];
-    model.score = @"5";
-    model.time = @"2016.10.25";
-    model.comment = @"懂哈嘎搞好规划上帝会啊哈刚好盖过哈哥和嘎斯韩国啊哈哥过哈哥湿地恢复是德国怕黄瓜片都会是个送给洪水过后送关怀送韩国手工还送关怀手工哈工大洪水给我哦关怀问候给我后悔我好";
-    model.answers = @[@"搞好规划上帝会啊哈刚好盖过哈哥和嘎斯韩国啊哈哥过哈哥湿地恢复是德国怕黄瓜片都会是个",@"搞好规划上帝会啊哈刚好盖过哈哥和嘎斯韩国啊哈哥过哈哥湿地恢复是德国怕黄瓜片都会是个"];
-    NSArray *data = @[@[model,model,model,model,model],@[model,model],@[model],@[model,model],@[model]];
-    self.dataArr = [NSMutableArray arrayWithArray:data];
+    
+    NSArray *comment = [Interface mappgetadvise];
+    [MyNetworker POST:comment[InterfaceUrl] parameters:comment[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            
+            self.dataArr = [self dataWithDict:responseObject];
+            [self showPage];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (NSArray *)dataWithDict:(NSDictionary *)dict {
+    NSMutableArray *star_1 = [NSMutableArray new];
+    NSMutableArray *star_2 = [NSMutableArray new];
+    NSMutableArray *star_3 = [NSMutableArray new];
+    NSMutableArray *star_4 = [NSMutableArray new];
+    NSMutableArray *star_5 = [NSMutableArray new];
+    
+    CommentModel *model = [[CommentModel alloc] initWithDict:dict];
+    switch ([dict[@"advise_star"] integerValue]) {
+        case 1:
+            [star_1 addObject:model];
+            break;
+        case 2:
+            [star_2 addObject:model];
+            break;
+        case 3:
+            [star_3 addObject:model];
+            break;
+        case 4:
+            [star_4 addObject:model];
+            break;
+        case 5:
+            [star_5 addObject:model];
+            break;
+        default:
+            break;
+    }
+    
+    return @[star_5, star_4, star_3, star_2, star_1];
 }
 
 - (void)initSegmentControl {
@@ -102,6 +142,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self selectSegmentIndex:scrollView.contentOffset];
 }
+
 
 
 - (void)selectAction:(UISegmentedControl *)sender {

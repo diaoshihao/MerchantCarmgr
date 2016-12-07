@@ -88,7 +88,7 @@
 
 - (void)levelImage {
     NSMutableArray *imageViews = [NSMutableArray new];
-    NSArray *imageNames = @[@"等级1",@"等级1",@"等级1",@"等级1",@"等级1"];
+    NSArray *imageNames = @[@"等级1",@"等级2",@"等级3",@"等级4",@"等级5"];
     UIImageView *lastImageView = nil;
     for (NSInteger i = 0; i < imageNames.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
