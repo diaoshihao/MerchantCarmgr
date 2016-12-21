@@ -10,13 +10,16 @@
 #import "ADScrollView.h"
 #import "DataView.h"
 #import "ClickView.h"
-#import "WorkModel.h"
+#import "AnalyseModel.h"
 #import "GeneralControl.h"
 
 #import "ReleaseViewController.h"
 #import "AnalyseViewController.h"
 #import "CommentViewController.h"
 #import "ComplaintViewController.h"
+
+#import "Interface.h"
+#import "Public.h"
 
 @interface WorkSpaceViewController ()
 
@@ -27,18 +30,18 @@
 
 @property (nonatomic, strong) DataView *dataView;
 
+@property (nonatomic, strong) AnalyseModel *model;
+
 @end
 
 @implementation WorkSpaceViewController
-{
-    WorkModel *model;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self baseSetting];
     [self showPage];
+    [self loadData];
 }
 
 - (void)baseSetting {
@@ -50,6 +53,22 @@
     [self initScrollView];
     [self initDataView];
     [self initButtons];
+}
+
+//加载数据
+- (void)loadData {
+    NSArray *shopinfo = [Interface mappgetstatisticsData_time:@""];
+    [MyNetworker POST:shopinfo[InterfaceUrl] parameters:shopinfo[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            NSDictionary *dict = responseObject;
+            
+            self.model = [[AnalyseModel alloc] initWithDict:dict];
+            
+            [self.dataView updateWithData:@[self.model.total_access,self.model.total_subscribe,self.model.total_communicate]];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)initContentView {
@@ -67,23 +86,17 @@
     
 }
 
-- (void)loadImages {
-    model = [[WorkModel alloc] init];
-    model.ADImages = @[@"首页大图"];
-}
-
 - (void)initScrollView {
-    [self loadImages];
     self.scrollView = [[ADScrollView alloc] init];
     self.scrollView.frame = CGRectMake(0, 64, [DefineValue screenWidth], [DefineValue screenWidth] * 2 / 5);
-    self.scrollView.images = model.ADImages;
+    self.scrollView.images = @[@"首页大图"];
     self.scrollView.autoScroll = YES;
     [self.view addSubview:self.scrollView];
 }
 
 - (void)initDataView {
     self.dataView = [[DataView alloc] init];
-    [self.dataView viewWithData:@[@"1000",@"2000",@"300"]];
+    [self.dataView viewWithData:@[@"0",@"0",@"0"]];
     [self.view addSubview:self.dataView];
     [self.dataView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.scrollView.mas_bottom);

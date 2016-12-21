@@ -8,6 +8,7 @@
 
 #import "BalanceViewController.h"
 #import "BalanceView.h"
+#import "Public.h"
 
 @interface BalanceViewController ()
 
@@ -42,7 +43,7 @@
 
 - (void)initView {
     self.balanceView = [[BalanceView alloc] init];
-    self.balanceView.balance = 1000;
+    self.balanceView.balance = [[Public valueForKey:@"account_balance"] floatValue];
     __weak typeof(self) weakSelf = self;
     self.balanceView.buttonClick = ^(Balance balance) {
         [weakSelf pushToPage:balance];

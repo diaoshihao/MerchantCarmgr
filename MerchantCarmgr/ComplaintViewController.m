@@ -11,6 +11,7 @@
 #import "ComplaintTableViewController.h"
 #import "ComplaintModel.h"
 #import "Interface.h"
+#import "UIViewController+ShowView.h"
 
 typedef NS_ENUM(NSUInteger, DataState) {
     ToDo = 0,//未解决
@@ -47,8 +48,16 @@ typedef NS_ENUM(NSUInteger, DataState) {
 }
 
 - (void)loadData {
+    UIView *progressHUD = [self loading:@"加载中..."];
+    [self clickDisable];
+    self.allowGesture = NO;
+    
     NSArray *complaint = [Interface mappgetcomplaint];
     [MyNetworker POST:complaint[InterfaceUrl] parameters:complaint[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
+        
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             ComplaintModel *model = [[ComplaintModel alloc] initWithDict:responseObject];
             if ([model.complaint_finish integerValue] == 0) {
@@ -60,7 +69,9 @@ typedef NS_ENUM(NSUInteger, DataState) {
             [self showPage];
         }
     } failure:^(NSError *error) {
-        
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
     }];
 }
 
@@ -109,9 +120,10 @@ typedef NS_ENUM(NSUInteger, DataState) {
     self.complaintTVC.dataArr = self.dataArr[state];
     [self.tableView reloadData];
     //如果数据为0，不能执行以下方法，否则crash
-    if (self.complaintTVC.dataArr.count != 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
+//    if (self.complaintTVC.dataArr.count != 0) {
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    }
+//    self.tableView.scrollsToTop = YES;
 }
 
 

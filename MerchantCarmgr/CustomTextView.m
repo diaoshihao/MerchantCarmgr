@@ -53,11 +53,13 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@"\n"]) {
-        self.returnBlock(textView.text);
-        textView.text = nil;
-        [self textViewDidEndEditing:textView];
-    }
+//    if ([text isEqualToString:@"\n"]) {
+//        if (self.returnBlock) {
+//            self.returnBlock(textView.text);
+//        }
+//        textView.text = nil;
+//        [self textViewDidEndEditing:textView];
+//    }
     return YES;
 }
 

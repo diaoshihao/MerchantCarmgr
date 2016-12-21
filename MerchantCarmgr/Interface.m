@@ -48,6 +48,21 @@
     return @[url,param];
 }
 
++ (NSArray *)appcheckverfcode:(NSString *)username
+                       mobile:(NSString *)mobile
+                    verf_code:(NSString *)verf_code
+                         type:(NSString *)type
+                         uuid:(NSString *)uuid {
+    NSString *url = [NSString stringWithFormat:@"%@appcheckverfcode.action",[Interface url]];
+    NSDictionary *param = @{@"username":username,
+                            @"mobile":mobile,
+                            @"verf_code":verf_code,
+                            @"type":type,
+                            @"uuid":uuid,
+                            @"version":[Interface appVersion]};
+    return @[url,param];
+}
+
 + (NSArray *)mapplogin:(NSString *)username password:(NSString *)password type:(NSString *)type verf_code:(NSString *)verf_code uuid:(NSString *)uuid {
     NSString *url = [NSString stringWithFormat:@"%@mapplogin.action",[Interface url]];
     NSDictionary *param = @{@"username":username, @"password":password, @"type":type, @"verf_code":verf_code, @"uuid":uuid, @"version":[Interface appVersion]};
@@ -74,9 +89,22 @@
 ///////////////////////////////////////////////////////////////////////
 
 
-+ (NSArray *)mapppubservicesName:(NSString *)name detail:(NSString *)detail price:(NSString *)price type:(NSString *)type scope:(NSString *)scope imgpath:(NSString *)imgpath {
++ (NSArray *)mapppubservicesName:(NSString *)name
+                          detail:(NSString *)detail
+                           price:(NSString *)price
+                            type:(NSString *)type
+                           scope:(NSString *)scope
+                         imgpath:(NSString *)imgpath {
     NSString *url = [NSString stringWithFormat:@"%@mapppubservices.action",[Interface url]];
-    NSDictionary *param = @{@"username":[Interface username], @"name":name, @"detail":detail, @"price":price, @"type":type, @"scope":scope, @"imgpath":imgpath, @"token":[Interface token], @"version":[Interface appVersion]};
+    NSDictionary *param = @{@"username":[Interface username],
+                            @"name":name,
+                            @"detail":detail,
+                            @"price":price,
+                            @"type":type,
+                            @"scope":scope,
+                            @"imgpath":imgpath,
+                            @"token":[Interface token],
+                            @"version":[Interface appVersion]};
     return @[url,param];
 }
 
@@ -104,6 +132,18 @@
     return @[url,param];
 }
 
++ (NSArray *)mappgetsubscribe {
+    NSString *url = [NSString stringWithFormat:@"%@mappgetsubscribe.action",[Interface url]];
+    NSDictionary *param = @{@"username":[Interface username], @"token":[Interface token], @"version":[Interface appVersion]};
+    return @[url,param];
+}
+
++ (NSArray *)mappgetshopinfo {
+    NSString *url = [NSString stringWithFormat:@"%@mappgetshopinfo.action",[Interface url]];
+    NSDictionary *param = @{@"username":[Interface username], @"token":[Interface token], @"version":[Interface appVersion]};
+    return @[url,param];
+}
+
 + (NSArray *)mappuploadintroduce:(NSString *)introduce {
     NSString *url = [NSString stringWithFormat:@"%@mappuploadintroduce.action",[Interface url]];
     NSDictionary *param = @{@"username":[Interface username], @"introduce":introduce, @"token":[Interface token], @"version":[Interface appVersion]};
@@ -113,6 +153,35 @@
 + (NSArray *)mappbinding {
     NSString *url = [NSString stringWithFormat:@"%@mappbinding.action",[Interface url]];
     NSDictionary *param = @{@"username":[Interface username], @"token":[Interface token], @"version":[Interface appVersion]};
+    return @[url,param];
+}
+
++ (NSArray *)mappsubmitparkinfo:(NSString *)operator_name
+                    operator_id:(NSString *)operator_id
+              operator_id_img_a:(NSString *)operator_id_img_a
+              operator_id_img_b:(NSString *)operator_id_img_b
+                 shop_introduce:(NSString *)shop_introduce
+                      shop_imgs:(NSString *)shop_imgs
+                      shop_name:(NSString *)shop_name
+                      shop_area:(NSString *)shop_area
+                   shop_address:(NSString *)shop_address
+                    shop_mobile:(NSString *)shop_mobile
+               shop_license_img:(NSString *)shop_license_img {
+    NSString *url = [NSString stringWithFormat:@"%@mappsubmitparkinfo.action",[Interface url]];
+    NSDictionary *param = @{@"username":[Interface username],
+                            @"operator_name":operator_name,
+                            @"operator_id":operator_id,
+                            @"operator_id_img_a":operator_id_img_a,
+                            @"operator_id_img_b":operator_id_img_b,
+                            @"shop_introduce":shop_introduce,
+                            @"shop_imgs":shop_imgs,
+                            @"shop_name":shop_name,
+                            @"shop_area":shop_area,
+                            @"shop_address":shop_address,
+                            @"shop_mobile":shop_mobile,
+                            @"shop_license_img":shop_license_img,
+                            @"token":[Interface token],
+                            @"version":[Interface appVersion]};
     return @[url,param];
 }
 

@@ -8,6 +8,7 @@
 
 #import "BailViewController.h"
 #import "BailView.h"
+#import "Public.h"
 
 @interface BailViewController ()
 
@@ -30,6 +31,7 @@
 
 - (void)initView {
     self.bailView = [[BailView alloc] init];
+    self.bailView.bail = [[Public valueForKey:@"deposit"] floatValue];
     __weak typeof(self) weakSelf = self;
     self.bailView.buttonClick = ^(Bail bail) {
         [weakSelf pushToPage:bail];

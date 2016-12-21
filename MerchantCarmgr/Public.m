@@ -11,6 +11,9 @@
 @implementation Public
 
 + (void)loadWebImage:(NSString *)imageUrl didLoad:(void (^)(UIImage * _Nonnull))block {
+    if (![imageUrl hasPrefix:@"http"] || imageUrl == nil || [imageUrl containsString:@" "]) {
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = nil;
         NSError *error;
@@ -21,6 +24,14 @@
             block(image);
         });
     });
+}
+
++ (void)saveValue:(NSString *)value key:(NSString *)key {
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+}
+
++ (NSString *)valueForKey:(NSString *)key {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
 + (UITextField *)twoSpaceTextField:(NSString *)placeholder {

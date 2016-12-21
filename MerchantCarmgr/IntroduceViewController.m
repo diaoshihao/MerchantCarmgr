@@ -9,6 +9,8 @@
 #import "IntroduceViewController.h"
 #import "CustomTextView.h"
 #import "GeneralControl.h"
+#import "Interface.h"
+#import "UIViewController+ShowView.h"
 
 @interface IntroduceViewController ()
 
@@ -44,9 +46,11 @@
 - (void)buttons {
     UIButton *sureBtn = [GeneralControl loginTypeButton:@"确认"];
     [sureBtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+    sureBtn.tag = 10;
     [self.view addSubview:sureBtn];
     UIButton *previewBtn = [GeneralControl loginTypeButton:@"预览"];
     [previewBtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+    previewBtn.tag = 20;
     [self.view addSubview:previewBtn];
     
     [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,6 +67,33 @@
 }
 
 - (void)action:(UIButton *)sender {
+    if (sender.tag == 10) {
+        [self uploadInfo];
+    } else if (sender.tag == 20) {
+        [self previewInfo];
+    } else {
+        
+    }
+}
+
+- (void)uploadInfo {
+    if (self.textView.text.length < 10) {
+        [self showAlertMessage:@"简介不能少于10个字"];
+        return;
+    }
+    NSArray *introduce = [Interface mappuploadintroduce:self.textView.text];
+    [MyNetworker POST:introduce[InterfaceUrl] parameters:introduce[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self showAlertMessage:@"上传失败"];
+        }
+    } failure:^(NSError *error) {
+        [self showAlertMessage:@"上传失败"];
+    }];
+}
+
+- (void)previewInfo {
     
 }
 

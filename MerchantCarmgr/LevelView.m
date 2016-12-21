@@ -107,6 +107,7 @@
     self.positiveLab = [self labelWithText:[NSString stringWithFormat:@"好评量：%ld",self.positive]];
     [self addSubview:self.positiveLab];
     self.nextLevelLab = [self labelWithText:[NSString stringWithFormat:@"距离下次升级还有：%ld",self.nextLevel]];
+    self.nextLevelLab.numberOfLines = 0;
     [self addSubview:self.nextLevelLab];
     NSArray *arr = @[self.positiveLab,self.nextLevelLab];
     [arr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];

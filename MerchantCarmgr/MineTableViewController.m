@@ -113,7 +113,10 @@
     if (indexPath.section == 0) {
         return;
     }
-    self.clickCell(indexPath);
+    
+    if (self.clickCell) {
+        self.clickCell(indexPath);
+    }
 }
 
 //判断tableview内容是否超过屏幕

@@ -11,6 +11,9 @@
 #import "CustomScrollView.h"
 #import "AppointTableViewController.h"
 #import "AppointModel.h"
+#import "UIViewController+ShowView.h"
+
+#import "Interface.h"
 
 @interface AppointmentViewController () <UIScrollViewDelegate>
 
@@ -18,24 +21,94 @@
 
 @property (nonatomic, strong) CustomScrollView *scrollView;
 
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSArray *dataArr;
+
+@property (nonatomic, strong) NSMutableArray *childVC;
+
+@property (nonatomic, strong) NSMutableArray *all;
+@property (nonatomic, strong) NSMutableArray *my;
+@property (nonatomic, strong) NSMutableArray *doing;
+@property (nonatomic, strong) NSMutableArray *done;
 
 @end
 
 @implementation AppointmentViewController
 
+- (NSMutableArray *)childVC {
+    if (_childVC == nil) {
+        _childVC = [NSMutableArray new];
+    }
+    return _childVC;
+}
+
+- (NSMutableArray *)all {
+    if (_all == nil) {
+        _all = [NSMutableArray new];
+    }
+    return _all;
+}
+- (NSMutableArray *)my {
+    if (_my == nil) {
+        _my = [NSMutableArray new];
+    }
+    return _my;
+}
+- (NSMutableArray *)doing {
+    if (_doing == nil) {
+        _doing = [NSMutableArray new];
+    }
+    return _doing;
+}
+- (NSMutableArray *)done {
+    if (_done == nil) {
+        _done = [NSMutableArray new];
+    }
+    return _done;
+}
+
 - (void)loadData {
-    NSDictionary *dict = @{@"state":@"0",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
-    NSDictionary *dict1 = @{@"state":@"1",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
-    NSDictionary *dict2 = @{@"state":@"2",@"order":@"ASDFGHJKL",@"headImage":@"",@"name":@"test",@"call":@"12346789",@"photoView":@"",@"title":@"易务车宝测试",@"time":@"2016.11.01",@"count":@"1",@"cost":@"1000.00"};
-    AppointModel *model = [[AppointModel alloc] initWithDict:dict];
-    AppointModel *model1 = [[AppointModel alloc] initWithDict:dict1];
-    AppointModel *model2 = [[AppointModel alloc] initWithDict:dict2];
-    NSArray *all = @[model,model1,model2];
-    NSArray *my = @[model];
-    NSArray *doing = @[model1];
-    NSArray *done = @[model2];
-    self.dataArr = [NSMutableArray arrayWithArray:@[all,my,doing,done]];
+    UIView *progressHUD = [self loading:@"加载中..."];
+    [self clickDisable];
+    
+    NSArray *subscribe = [Interface mappgetsubscribe];
+    [MyNetworker POST:subscribe[InterfaceUrl] parameters:subscribe[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            [self.all removeAllObjects];
+            [self.my removeAllObjects];
+            [self.doing removeAllObjects];
+            [self.done removeAllObjects];
+            
+            for (NSDictionary *dict in responseObject[@"services_list"]) {
+                AppointModel *model = [[AppointModel alloc] initWithDict:dict];
+                [self.all addObject:model];
+                
+                if ([model.subscribe_state isEqualToString:@"0"]) {
+                    [self.my addObject:model];
+                }
+                
+                if ([model.subscribe_state isEqualToString:@"1"]) {
+                    [self.doing addObject:model];
+                }
+                
+                if ([model.subscribe_state isEqualToString:@"2"]) {
+                    [self.done addObject:model];
+                }
+            }
+            
+            self.dataArr = @[self.all,self.my,self.doing,self.done];
+            
+            [self showPage];
+        } else {
+            [self noDataPage];
+        }
+    } failure:^(NSError *error) {
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        [self noDataPage];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -43,7 +116,6 @@
     // Do any additional setup after loading the view.
     [self baseSetting];
     [self loadData];
-    [self showPage];
 }
 
 - (void)baseSetting {
@@ -54,6 +126,10 @@
 - (void)showPage {
     [self initSegmentControl];
     [self initAppointPage];
+}
+
+- (void)noDataPage {
+    [self initSegmentControl];
 }
 
 - (void)initSegmentControl {
@@ -70,16 +146,18 @@
 }
 
 - (void)initAppointPage {
-    NSMutableArray *views = [NSMutableArray new];
+    NSMutableArray *tableViews = [NSMutableArray arrayWithCapacity:4];
     for (NSInteger i = 0; i < self.segment.numberOfSegments; i++) {
         AppointTableViewController *appointTVC = [[AppointTableViewController alloc] init];
         appointTVC.dataArr = self.dataArr[i];
-        UITableView *tableView = appointTVC.tableView;
         [self addChildViewController:appointTVC];
-        [views addObject:tableView];
+        [self.childVC addObject:appointTVC];
+        
+        UITableView *tableView = appointTVC.tableView;
+        [tableViews addObject:tableView];
     }
     
-    self.scrollView = [[CustomScrollView alloc] initWithViews:views];
+    self.scrollView = [[CustomScrollView alloc] initWithViews:tableViews];
     self.scrollView.delegate = self;
     CGFloat height = [DefineValue screenHeight] - 64 - 44 - 49;
     CGFloat width = [DefineValue screenWidth];

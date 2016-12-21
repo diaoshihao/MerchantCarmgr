@@ -107,4 +107,25 @@
 }
 
 
+- (void)clickDisable {
+    self.view.userInteractionEnabled = NO;
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)view;
+            button.enabled = NO;
+        }
+    }
+}
+
+- (void)clickEnable {
+    self.view.userInteractionEnabled = YES;
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)view;
+            button.enabled = YES;
+        }
+    }
+}
+
+
 @end

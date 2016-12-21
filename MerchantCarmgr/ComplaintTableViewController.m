@@ -23,6 +23,7 @@
     [self.tableView registerClass:[ComplaintTableViewCell class] forCellReuseIdentifier:@"complaint"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 150;
+    self.tableView.tableFooterView = [UIView new];
     
 }
 

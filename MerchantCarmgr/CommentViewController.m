@@ -13,6 +13,7 @@
 #import "CommentModel.h"
 #import "PhotoPreviewController.h"
 #import "Interface.h"
+#import "UIViewController+ShowView.h"
 
 @interface CommentViewController () <ImageBroswerDelegate, UIScrollViewDelegate>
 
@@ -25,13 +26,6 @@
 @end
 
 @implementation CommentViewController
-
-- (NSMutableArray *)dataArr {
-    if (_dataArr == nil) {
-        _dataArr = [NSMutableArray new];
-    }
-    return _dataArr;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,16 +40,25 @@
 }
 
 - (void)loadData {
+    UIView *progressHUD = [self loading:@"加载中..."];
+    [self clickDisable];
+    self.allowGesture = NO;
     
     NSArray *comment = [Interface mappgetadvise];
     [MyNetworker POST:comment[InterfaceUrl] parameters:comment[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
+        
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             
             self.dataArr = [self dataWithDict:responseObject];
             [self showPage];
         }
     } failure:^(NSError *error) {
-        
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
     }];
 }
 

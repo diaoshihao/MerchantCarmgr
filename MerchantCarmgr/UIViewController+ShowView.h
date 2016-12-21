@@ -30,7 +30,10 @@
 - (UIView *)success:(NSString *)text dismiss:(NSUInteger)timeout;
 
 ///////////////////////////////////////////////////////////////////////
-//添加通知
-- (void)addobserverTo:(UIViewController *)VC selector:(SEL)selector name:(NSString *)name;
+
+- (void)clickEnable;
+
+- (void)clickDisable;
+
 
 @end

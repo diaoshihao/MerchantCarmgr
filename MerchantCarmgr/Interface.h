@@ -38,6 +38,9 @@ typedef NS_ENUM(NSUInteger, UploadImageType) {
 //send verf_code 发送验证码
 + (NSArray *)appsendverfcode:(NSString *)username type:(NSString *)type uuid:(NSString *)uuid;
 
+//check verf_code
++ (NSArray *)appcheckverfcode:(NSString *)username mobile:(NSString *)mobile verf_code:(NSString *)verf_code type:(NSString *)type uuid:(NSString *)uuid;
+
 //login 登录
 + (NSArray *)mapplogin:(NSString *)username password:(NSString *)password type:(NSString *)type verf_code:(NSString *)verf_code uuid:(NSString *)uuid;
 
@@ -63,10 +66,19 @@ typedef NS_ENUM(NSUInteger, UploadImageType) {
 //mappgetpubedservice 获取已发布服务
 + (NSArray *)mappgetpubedservice;
 
+//获取预约信息
++ (NSArray *)mappgetsubscribe;
+
+//获取店铺信息
++ (NSArray *)mappgetshopinfo;
+
 //mappuploadintroduce 上传企业简介
 + (NSArray *)mappuploadintroduce:(NSString *)introduce;
 
 //mappbinding 商家APP账号绑定
 + (NSArray *)mappbinding;
+
+//mappsubmitparkinfo 提交入驻申请信息
++ (NSArray *)mappsubmitparkinfo:(NSString *)operator_name operator_id:(NSString *)operator_id operator_id_img_a:(NSString *)operator_id_img_a operator_id_img_b:(NSString *)operator_id_img_b shop_introduce:(NSString *)shop_introduce shop_imgs:(NSString *)shop_imgs shop_name:(NSString *)shop_name shop_area:(NSString *)shop_area shop_address:(NSString *)shop_address shop_mobile:(NSString *)shop_mobile shop_license_img:(NSString *)shop_license_img;
 
 @end

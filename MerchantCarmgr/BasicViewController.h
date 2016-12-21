@@ -28,4 +28,8 @@
 
 @property (nonatomic, assign) BOOL allowGesture;
 
+- (void)addLeftItemButton;
+
+- (void)addRightItemButton;
+
 @end

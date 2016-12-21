@@ -31,7 +31,11 @@
 
 - (void)setHeadImage:(UIImage *)headImage {
     _headImage = headImage;
-    self.headImageView.image = headImage;
+    if (headImage == nil) {
+        self.headImageView.image = [UIImage imageNamed:@"头像"];
+    } else {
+        self.headImageView.image = headImage;
+    }
 }
 
 - (void)setName:(NSString *)name {

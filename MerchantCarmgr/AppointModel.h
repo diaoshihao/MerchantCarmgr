@@ -6,21 +6,19 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BasicModel.h"
 
-@interface AppointModel : NSObject
+@interface AppointModel : BasicModel
 
-@property (nonatomic, strong) NSString *state;
-@property (nonatomic, strong) NSString *order;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *time;
-@property (nonatomic, strong) NSString *count;
-@property (nonatomic, strong) NSString *cost;
-@property (nonatomic, strong) NSString *call;
-@property (nonatomic, strong) NSString *headImage;
-@property (nonatomic, strong) NSString *photoView;
+@property (nonatomic, strong) NSString *subscribe_state;
+@property (nonatomic, strong) NSString *subscribe_order;
+@property (nonatomic, strong) NSString *subscribe_service_name;
+@property (nonatomic, strong) NSString *subscribe_user_id;
+@property (nonatomic, strong) NSString *subscribe_date;
+@property (nonatomic, strong) NSString *subscribe_service_total;
+@property (nonatomic, strong) NSString *subscribe_price;
+@property (nonatomic, strong) NSString *subscribe_user_mobile;
+@property (nonatomic, strong) NSString *subscribe_service_img;
 
-- (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end

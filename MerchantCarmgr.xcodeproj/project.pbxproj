@@ -20,16 +20,18 @@
 		841E60DF1D92193F001BF053 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841E60DE1D92193F001BF053 /* LocationManager.m */; };
 		841E60E21D92716C001BF053 /* SelectAreaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841E60E11D92716C001BF053 /* SelectAreaTableViewController.m */; };
 		841E60E61D938112001BF053 /* FindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841E60E51D938112001BF053 /* FindPasswordViewController.m */; };
+		8422C58D1E00D8D600934DD2 /* IssueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8422C58C1E00D8D600934DD2 /* IssueTableViewCell.m */; };
+		8422C5911E00DBFE00934DD2 /* IssueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8422C5901E00DBFE00934DD2 /* IssueModel.m */; };
+		8422C5941E00DCAD00934DD2 /* BasicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8422C5931E00DCAD00934DD2 /* BasicModel.m */; };
+		8422C5981E00DE0700934DD2 /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8422C5971E00DE0700934DD2 /* IssueTableViewController.m */; };
 		8425E34B1DA8A066008F8C3D /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425E34A1DA8A066008F8C3D /* GuidePageViewController.m */; };
 		8435BE3A1DB460E40000F630 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE391DB460E40000F630 /* BasicViewController.m */; };
 		8435BE3E1DB464B00000F630 /* GeneralView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE3D1DB464B00000F630 /* GeneralView.m */; };
 		8435BE431DB4687C0000F630 /* GeneralControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE421DB4687C0000F630 /* GeneralControl.m */; };
-		8435BE461DB470430000F630 /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE451DB470430000F630 /* BasicNavigationController.m */; };
 		8435BE511DB4787A0000F630 /* WorkSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE501DB4787A0000F630 /* WorkSpaceViewController.m */; };
 		8435BE5D1DB4798E0000F630 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE5C1DB4798E0000F630 /* IssueViewController.m */; };
 		8435BE601DB479A40000F630 /* AppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE5F1DB479A40000F630 /* AppointmentViewController.m */; };
 		8435BE631DB479B00000F630 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE621DB479B00000F630 /* MineViewController.m */; };
-		8435BE661DB47D0B0000F630 /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BE651DB47D0B0000F630 /* BasicTabBarController.m */; };
 		8435BEBD1DB4B1AB0000F630 /* ADScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BEBC1DB4B1AB0000F630 /* ADScrollView.m */; };
 		8435BEC41DB4BAFF0000F630 /* WorkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BEC31DB4BAFF0000F630 /* WorkModel.m */; };
 		8435BEC71DB4CB1D0000F630 /* DataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435BEC61DB4CB1D0000F630 /* DataView.m */; };
@@ -161,6 +163,14 @@
 		841E60E11D92716C001BF053 /* SelectAreaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAreaTableViewController.m; sourceTree = "<group>"; };
 		841E60E41D938112001BF053 /* FindPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordViewController.h; sourceTree = "<group>"; };
 		841E60E51D938112001BF053 /* FindPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordViewController.m; sourceTree = "<group>"; };
+		8422C58B1E00D8D600934DD2 /* IssueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTableViewCell.h; sourceTree = "<group>"; };
+		8422C58C1E00D8D600934DD2 /* IssueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewCell.m; sourceTree = "<group>"; };
+		8422C58F1E00DBFE00934DD2 /* IssueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueModel.h; sourceTree = "<group>"; };
+		8422C5901E00DBFE00934DD2 /* IssueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueModel.m; sourceTree = "<group>"; };
+		8422C5921E00DCAD00934DD2 /* BasicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicModel.h; sourceTree = "<group>"; };
+		8422C5931E00DCAD00934DD2 /* BasicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicModel.m; sourceTree = "<group>"; };
+		8422C5961E00DE0700934DD2 /* IssueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTableViewController.h; sourceTree = "<group>"; };
+		8422C5971E00DE0700934DD2 /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		8425E3431DA8854C008F8C3D /* Pods-MerchantCarmgr.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-MerchantCarmgr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr.debug.xcconfig"; sourceTree = "<group>"; };
 		8425E3441DA8854C008F8C3D /* Pods-MerchantCarmgr.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-MerchantCarmgr.release.xcconfig"; path = "Pods/Target Support Files/Pods-MerchantCarmgr/Pods-MerchantCarmgr.release.xcconfig"; sourceTree = "<group>"; };
 		8425E3491DA8A066008F8C3D /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
@@ -171,8 +181,6 @@
 		8435BE3D1DB464B00000F630 /* GeneralView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralView.m; sourceTree = "<group>"; };
 		8435BE411DB4687C0000F630 /* GeneralControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralControl.h; sourceTree = "<group>"; };
 		8435BE421DB4687C0000F630 /* GeneralControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralControl.m; sourceTree = "<group>"; };
-		8435BE441DB470430000F630 /* BasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicNavigationController.h; sourceTree = "<group>"; };
-		8435BE451DB470430000F630 /* BasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicNavigationController.m; sourceTree = "<group>"; };
 		8435BE4F1DB4787A0000F630 /* WorkSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkSpaceViewController.h; sourceTree = "<group>"; };
 		8435BE501DB4787A0000F630 /* WorkSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceViewController.m; sourceTree = "<group>"; };
 		8435BE5B1DB4798E0000F630 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueViewController.h; sourceTree = "<group>"; };
@@ -181,8 +189,6 @@
 		8435BE5F1DB479A40000F630 /* AppointmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentViewController.m; sourceTree = "<group>"; };
 		8435BE611DB479B00000F630 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		8435BE621DB479B00000F630 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
-		8435BE641DB47D0B0000F630 /* BasicTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicTabBarController.h; sourceTree = "<group>"; };
-		8435BE651DB47D0B0000F630 /* BasicTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicTabBarController.m; sourceTree = "<group>"; };
 		8435BEBB1DB4B1AB0000F630 /* ADScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADScrollView.h; sourceTree = "<group>"; };
 		8435BEBC1DB4B1AB0000F630 /* ADScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADScrollView.m; sourceTree = "<group>"; };
 		8435BEC21DB4BAFF0000F630 /* WorkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkModel.h; sourceTree = "<group>"; };
@@ -463,6 +469,24 @@
 			name = "找回密码";
 			sourceTree = "<group>";
 		};
+		8422C58E1E00D8E300934DD2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8422C58B1E00D8D600934DD2 /* IssueTableViewCell.h */,
+				8422C58C1E00D8D600934DD2 /* IssueTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		8422C5951E00DCB700934DD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8422C5921E00DCAD00934DD2 /* BasicModel.h */,
+				8422C5931E00DCAD00934DD2 /* BasicModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8425E3471DA88F5F008F8C3D /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,13 +516,10 @@
 		8435BE371DB4609A0000F630 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				8422C5951E00DCB700934DD2 /* Model */,
 				8435BF951DB76E970000F630 /* Basic二级页面 */,
 				8435BE381DB460E40000F630 /* BasicViewController.h */,
 				8435BE391DB460E40000F630 /* BasicViewController.m */,
-				8435BE441DB470430000F630 /* BasicNavigationController.h */,
-				8435BE451DB470430000F630 /* BasicNavigationController.m */,
-				8435BE641DB47D0B0000F630 /* BasicTabBarController.h */,
-				8435BE651DB47D0B0000F630 /* BasicTabBarController.m */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -628,6 +649,8 @@
 			children = (
 				8435BE5B1DB4798E0000F630 /* IssueViewController.h */,
 				8435BE5C1DB4798E0000F630 /* IssueViewController.m */,
+				8422C5961E00DE0700934DD2 /* IssueTableViewController.h */,
+				8422C5971E00DE0700934DD2 /* IssueTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -639,6 +662,7 @@
 				8435BF5A1DB6027C0000F630 /* IssueLabel.m */,
 				8435BF5C1DB611640000F630 /* RightButton.h */,
 				8435BF5D1DB611640000F630 /* RightButton.m */,
+				8422C58E1E00D8E300934DD2 /* Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -646,6 +670,8 @@
 		8435BE541DB4789F0000F630 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8422C58F1E00DBFE00934DD2 /* IssueModel.h */,
+				8422C5901E00DBFE00934DD2 /* IssueModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -691,6 +717,8 @@
 		8435BE591DB478BF0000F630 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8435BF7B1DB721070000F630 /* StarsView.h */,
+				8435BF7C1DB721070000F630 /* StarsView.m */,
 				8435BF6B1DB62B9B0000F630 /* HeadView.h */,
 				8435BF6C1DB62B9B0000F630 /* HeadView.m */,
 				8435BF6E1DB706610000F630 /* WeekView.h */,
@@ -742,8 +770,6 @@
 				849599C11DB9EDC800B168D7 /* MessageTableViewCell.m */,
 				8435BF771DB712930000F630 /* MineTableViewCell.h */,
 				8435BF781DB712930000F630 /* MineTableViewCell.m */,
-				8435BF7B1DB721070000F630 /* StarsView.h */,
-				8435BF7C1DB721070000F630 /* StarsView.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1334,10 +1360,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B640621D82A47E0017F4B0 /* ViewController.m in Sources */,
+				8422C5941E00DCAD00934DD2 /* BasicModel.m in Sources */,
 				849599C21DB9EDC800B168D7 /* MessageTableViewCell.m in Sources */,
 				8435BFBC1DB8A7FC0000F630 /* MyPhotoViewController.m in Sources */,
 				84B640AB1D864C6B0017F4B0 /* EnterView.m in Sources */,
 				84B640CF1D87E7A20017F4B0 /* CustomTextField.m in Sources */,
+				8422C58D1E00D8D600934DD2 /* IssueTableViewCell.m in Sources */,
 				841E60DF1D92193F001BF053 /* LocationManager.m in Sources */,
 				8435BF761DB70DC30000F630 /* MineTableViewController.m in Sources */,
 				84B640BB1D879DD60017F4B0 /* InheritForLeagueViewController.m in Sources */,
@@ -1358,6 +1386,7 @@
 				84B640C81D87A5720017F4B0 /* LeagueParentViewController.m in Sources */,
 				8435BFB01DB8A7130000F630 /* LevelViewController.m in Sources */,
 				8435BF6A1DB624E20000F630 /* AppointTableViewCell.m in Sources */,
+				8422C5981E00DE0700934DD2 /* IssueTableViewController.m in Sources */,
 				841E60E61D938112001BF053 /* FindPasswordViewController.m in Sources */,
 				8435BF661DB61C480000F630 /* CustomSegmentControl.m in Sources */,
 				841E60C61D90D397001BF053 /* AddressPickerController.m in Sources */,
@@ -1373,7 +1402,6 @@
 				84B640A11D8638480017F4B0 /* Public.m in Sources */,
 				8435BF8E1DB764710000F630 /* CommentViewController.m in Sources */,
 				841E60E21D92716C001BF053 /* SelectAreaTableViewController.m in Sources */,
-				8435BE661DB47D0B0000F630 /* BasicTabBarController.m in Sources */,
 				8435BF841DB75B1D0000F630 /* MineModel.m in Sources */,
 				849599D61DBDE3A700B168D7 /* CustomLabel.m in Sources */,
 				841E60BB1D8FC997001BF053 /* ChooseServiceModel.m in Sources */,
@@ -1409,9 +1437,9 @@
 				84B640971D82B62D0017F4B0 /* TabBarController.m in Sources */,
 				8435BE431DB4687C0000F630 /* GeneralControl.m in Sources */,
 				84F762531DDAAAFF00549408 /* PreviewCollectionViewCell.m in Sources */,
+				8422C5911E00DBFE00934DD2 /* IssueModel.m in Sources */,
 				8425E34B1DA8A066008F8C3D /* GuidePageViewController.m in Sources */,
 				8435BFB61DB8A7960000F630 /* BailViewController.m in Sources */,
-				8435BE461DB470430000F630 /* BasicNavigationController.m in Sources */,
 				8435BF791DB712930000F630 /* MineTableViewCell.m in Sources */,
 				8435BECD1DB4DF170000F630 /* ClickView.m in Sources */,
 				849599DD1DBF0FE700B168D7 /* AnalyseView.m in Sources */,

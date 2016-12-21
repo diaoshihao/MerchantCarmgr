@@ -16,6 +16,7 @@
 #import "UIViewController+ShowView.h"
 #import "Interface.h"
 #import <Photos/PHAsset.h>
+#import "IssueViewController.h"
 
 @interface ReleaseViewController () <TZImagePickerControllerDelegate>
 {
@@ -89,6 +90,27 @@
     [self initPickPhotoButton];
     [self initChooseView];
     [self initReleaseButton];
+}
+
+- (void)addRightItemButton {
+    self.rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.rightItemButton setTitle:@"我的发布" forState:UIControlStateNormal];
+    [self.rightItemButton setTitleColor:[DefineValue mainColor] forState:UIControlStateNormal];
+    self.rightItemButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.rightItemButton.titleLabel.font = [DefineValue font16];
+    [self.rightItemButton addTarget:self action:@selector(showMyIssue) forControlEvents:UIControlEventTouchUpInside];
+    [self.customNavBar addSubview:self.rightItemButton];
+    [self.rightItemButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.right.mas_equalTo(-20);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(44);
+    }];
+}
+
+- (void)showMyIssue {
+    IssueViewController *issueVC = [[IssueViewController alloc] init];
+    [self.navigationController pushViewController:issueVC animated:YES];
 }
 
 - (void)initContentView {
@@ -225,7 +247,7 @@
 //将日期转为NSString     如果不设置格式，返回null  setDateFormat
 - (NSString *)stringWithDate:(NSDate *)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
     return [formatter stringFromDate:date];
 }
 
@@ -305,13 +327,17 @@
 //上传图片
 - (void)uploadImage {
     UIView *progressHUD = [self loading:@"正在上传图片"];
-    self.view.userInteractionEnabled = NO;
+    [self clickDisable];
+    self.allowGesture = NO;
+    
     NSArray *upload = [Interface mappupload:self.photos.count imageType:Service_introduce_img];
     [MyNetworker uploadWithURL:upload[InterfaceUrl] parameters:upload[Parameters] images:self.photos name:@"file" fileName:self.photosName mimeType:@"jpeg" progress:^(NSProgress *progress) {
         
     } success:^(id responseObject) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        [self clickEnable];
+        self.allowGesture = YES;
+        
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             //获取图片路径
             NSMutableArray *imagepaths = [NSMutableArray new];
@@ -326,7 +352,8 @@
         
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        [self clickEnable];
+        self.allowGesture = YES;
     }];
 }
 
@@ -335,10 +362,14 @@
     NSArray *release = [Interface mapppubservicesName:self.titleTextField.text detail:self.detailTextField.text price:self.priceTextField.text type:self.chooseService.currentTitle scope:self.scopeTextField.text imgpath:imagepath];
     
     UIView *progressHUD = [self loading:@"正在发布"];
-    self.view.userInteractionEnabled = NO;
+    [self clickDisable];
+    self.allowGesture = NO;
+    
     [MyNetworker POST:release[InterfaceUrl] parameters:release[Parameters] success:^(id responseObject) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        [self clickEnable];
+        self.allowGesture = YES;
+        
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             [self success:@"发布成功" dismiss:2];
             [self.navigationController popViewControllerAnimated:YES];
@@ -347,7 +378,8 @@
         }
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
-        self.view.userInteractionEnabled = YES;
+        [self clickEnable];
+        self.allowGesture = YES;
         [self connectError];
     }];
 }

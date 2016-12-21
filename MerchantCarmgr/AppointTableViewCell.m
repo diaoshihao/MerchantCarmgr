@@ -9,6 +9,7 @@
 #import "AppointTableViewCell.h"
 #import <Masonry.h>
 #import "DefineValue.h"
+#import "Public.h"
 
 @implementation AppointTableViewCell
 {
@@ -16,26 +17,23 @@
 }
 
 - (void)loadDataWithModel:(AppointModel *)model {
-    self.state = [model.state integerValue];
+//    self.state = [stateArr indexOfObject:model.subscribe_state];
+    self.state = [model.subscribe_state integerValue];
+    [self viewWithAppointState:self.state];
+    
     self.stateLabel.text = stateArr[self.state];
-    self.orderLabel.text = [NSString stringWithFormat:@"订单号：%@",model.order];
-    self.nameLabel.text = model.name;
-    self.titleLabel.text = model.title;
-    self.timeLabel.text = model.time;
-    self.countLabel.text = [NSString stringWithFormat:@"共%@件商品",model.count];
-    self.costLabel.text = [NSString stringWithFormat:@"¥ %@",model.cost];
-    if (model.headImage.length != 0) {
-        self.headImage.image = [UIImage imageNamed:model.headImage];
+    self.orderLabel.text = [NSString stringWithFormat:@"订单号：%@",model.subscribe_order];
+    self.nameLabel.text = model.subscribe_service_name;
+    self.titleLabel.text = model.subscribe_service_name;
+    self.timeLabel.text = model.subscribe_date;
+    self.countLabel.text = [NSString stringWithFormat:@"共%@件商品",model.subscribe_service_total];
+    self.costLabel.text = [NSString stringWithFormat:@"¥ %@",model.subscribe_price];
+    self.phoneNum = model.subscribe_user_mobile;
+    if (model.subscribe_service_img.length != 0) {
+        [Public loadWebImage:model.subscribe_service_img didLoad:^(UIImage * _Nonnull image) {
+            self.photoView.image = image;
+        }];
     }
-    if (model.photoView.length != 0) {
-        self.photoView.image = [UIImage imageNamed:model.photoView];
-    }
-    self.phoneNum = model.call;
-}
-
-- (void)setState:(AppointState)state {
-    _state = state;
-    [self viewWithAppointState:state];
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

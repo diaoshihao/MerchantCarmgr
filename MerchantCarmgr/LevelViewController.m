@@ -8,6 +8,7 @@
 
 #import "LevelViewController.h"
 #import "LevelView.h"
+#import "Public.h"
 
 @interface LevelViewController ()
 
@@ -30,7 +31,7 @@
 
 - (void)initView {
     self.levelView = [[LevelView alloc] init];
-    self.levelView.grade = 3;
+    self.levelView.grade = [[Public valueForKey:@"merchants_level"] integerValue];
     self.levelView.positive = 100;
     self.levelView.nextLevel = 20;
     [self.view addSubview:self.levelView];

@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 //异步加载图片
 + (void)loadWebImage:(NSString *)imageUrl didLoad:(void(^)(UIImage *image))block;
 
++ (void)saveValue:(NSString *)value key:(NSString *)key;
+
++ (NSString *)valueForKey:(NSString *)key;
+
 /**
  * 创建缩进两格的TextField
  */
@@ -43,19 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  * 参数：SourceType
  */
 + (UIImagePickerController *)imagePickerControllerWithSourType:(UIImagePickerControllerSourceType)sourceType delegate:(nullable id)delegate;
-
-/**
- * 网络接口
- */
-+ (void)afPOST:(NSString *)URLString
-    parameters:(nullable id)parameters
-       success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
-       failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
-
-/**
- * 上传
- */
-+ (void)upload:(NSString *)URLString;
 
 NS_ASSUME_NONNULL_END
 

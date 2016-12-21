@@ -11,6 +11,11 @@
 #import "HeadView.h"
 #import "WeekView.h"
 
+#import "Interface.h"
+#import "MineModel.h"
+
+#import "Public.h"
+
 #import "LevelViewController.h"
 #import "BalanceViewController.h"
 #import "BailViewController.h"
@@ -26,6 +31,12 @@
 @property (nonatomic, strong) WeekView *weekView;
 
 @property (nonatomic, strong) NSArray *viewcontrollers;
+
+@property (nonatomic, strong) MineModel *mineModel;
+
+@property (nonatomic, strong) MineTableViewController *TVC;
+
+@property (nonatomic, strong) NSArray *dataList;//商家评分和等级
 
 @end
 
@@ -45,40 +56,77 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
+    
     [self showPage];
+    
+    [self loadData];
 }
 
+//加载页面
 - (void)showPage {
     [self initHeadView];
     [self initWeekView];
     [self initMineTableView];
 }
 
+- (void)updatePage {
+    [Public loadWebImage:self.mineModel.merchants_imgs didLoad:^(UIImage * _Nonnull image) {
+        self.headView.headImage = image;
+    }];
+    self.headView.name = self.mineModel.shop_name;
+    
+    [self.weekView updateWithData:@[self.mineModel.week_total_orders,self.mineModel.week_total_income]];
+    
+    self.dataList = @[self.mineModel.merchants_score,self.mineModel.merchants_level];
+    self.TVC.dataList = self.dataList;
+    [self.TVC.tableView reloadData];
+}
+
+//加载数据
+- (void)loadData {
+    NSArray *shopinfo = [Interface mappgetshopinfo];
+    [MyNetworker POST:shopinfo[InterfaceUrl] parameters:shopinfo[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            NSDictionary *dict = responseObject;
+            
+            self.mineModel = [[MineModel alloc] initWithDict:dict];
+            
+            for (NSString *key in dict.allKeys) {
+                [Public saveValue:dict[key] key:key];
+            }
+            
+            [self updatePage];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)initHeadView {
     self.headView = [[HeadView alloc] initWithFrame:CGRectMake(0, 0, [DefineValue screenWidth], [DefineValue screenWidth] * 0.35)];
     self.headView.headImage = [UIImage imageNamed:@"头像"];
-    self.headView.name = @"店铺名称";
+    self.headView.name = [Interface username];
     [self.view addSubview:self.headView];
 }
 
 - (void)initWeekView {
     self.weekView = [[WeekView alloc] initWithFrame:CGRectMake(0, self.headView.frame.size.height + 4, [DefineValue screenWidth], 60)];
     self.weekView.titles = @[@"本周订单(单)",@"本周收入(元)"];
-    [self.weekView viewWithData:@[@"1000",@"8888"]];
+    [self.weekView viewWithData:@[@"0", @"0"]];
     [self.view addSubview:self.weekView];
 }
 
 - (void)initMineTableView {
-    MineTableViewController *tableViewController = [[MineTableViewController alloc] init];
-    tableViewController.dataList = @[@"0.1",@"3"];
+    self.TVC = [[MineTableViewController alloc] init];
     
-#pragma mark 点击cell的回调实现
-    tableViewController.clickCell = ^(NSIndexPath *indexPath) {
-        [self pushWithIndexPath:indexPath];
+#pragma mark 点击cell的回调
+    __weak typeof(self) weakSelf = self;
+    self.TVC.clickCell = ^(NSIndexPath *indexPath) {
+        [weakSelf pushWithIndexPath:indexPath];
     };
     
-    [self addChildViewController:tableViewController];
-    UITableView *tableView = tableViewController.tableView;
+    [self addChildViewController:self.TVC];
+    UITableView *tableView = self.TVC.tableView;
     [self.view addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.weekView.mas_bottom).offset([DefineValue pixHeight] - 5);

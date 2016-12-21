@@ -34,16 +34,21 @@
 }
 
 - (void)login {
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
     if (self.usernameField.text.length == 0 || self.passwordField.text.length == 0) {
         [self showAlertMessage:@"用户名和密码不能为空"];
         return;
     }
+    
     UIView *progressHUD = [self loading:@"正在登录..."];
     self.allowGesture = NO;//禁止交互和手势
+    [self clickDisable];
+    
     NSArray *login = [Interface mapplogin:self.usernameField.text password:self.passwordField.text type:@"0" verf_code:@"" uuid:@""];
     [MyNetworker POST:login[InterfaceUrl] parameters:login[Parameters] success:^(id responseObject) {
         [progressHUD removeFromSuperview];
         self.allowGesture = YES;//打开交互和手势
+        [self clickEnable];
         
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             //判断审核状态
@@ -64,6 +69,7 @@
     } failure:^(NSError *error) {
         [progressHUD removeFromSuperview];
         self.allowGesture = YES;//打开交互和手势
+        [self clickEnable];
         [self connectError];
     }];
 }
@@ -119,6 +125,7 @@
     self.passwordField.rightView = [self rightView];
 }
 
+//显示／隐藏 密码
 - (UIButton *)rightView {
     UIButton *eye = [UIButton buttonWithType:UIButtonTypeCustom];
     eye.frame = CGRectMake(0, 0, 44, 44);

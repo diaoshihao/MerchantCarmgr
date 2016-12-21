@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "BasicNavigationController.h"
 #import "EnterViewController.h"
 #import "TabBarController.h"
 #import "GuidePageViewController.h"
@@ -54,7 +53,7 @@
 //显示登录页
 - (void)showLoginPage {
     EnterViewController *enterVC = [[EnterViewController alloc] init];
-    BasicNavigationController *enterNav = [[BasicNavigationController alloc] initWithRootViewController:enterVC];
+    UINavigationController *enterNav = [[UINavigationController alloc] initWithRootViewController:enterVC];
     [self addChildViewController:enterNav];
     [self.view addSubview:enterNav.view];
 }

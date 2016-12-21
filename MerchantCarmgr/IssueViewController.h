@@ -6,8 +6,8 @@
 //  Copyright © 2016年 yiwuchebao. All rights reserved.
 //
 
-#import "BasicViewController.h"
+#import "SecondaryViewController.h"
 
-@interface IssueViewController : BasicViewController
+@interface IssueViewController : SecondaryViewController
 
 @end

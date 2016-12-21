@@ -10,6 +10,7 @@
 #import "AnalyseModel.h"
 #import "AnalyseView.h"
 #import "Interface.h"
+#import "UIViewController+ShowView.h"
 
 @interface AnalyseViewController ()
 
@@ -26,14 +27,24 @@
 @implementation AnalyseViewController
 
 - (void)loadData {
+    UIView *progressHUD = [self loading:@"加载中..."];
+    [self clickDisable];
+    self.allowGesture = NO;
+    
     NSArray *analyse = [Interface mappgetstatisticsData_time:@""];
     [MyNetworker POST:analyse[InterfaceUrl] parameters:analyse[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
+        
         if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
             AnalyseModel *model = [[AnalyseModel alloc] initWithDict:responseObject];
             self.analyse.dataArr = @[@[model.total_subscribe,model.total_access,model.total_communicate],@[model.day_total_subscribe,model.month_total_subscribe],@[model.day_total_order,model.month_total_order],@[model.fatch_cash_total,model.account_balance],@[model.evaluate_start_1,model.evaluate_start_2,model.evaluate_start_3,model.evaluate_start_4,model.evaluate_start_5]];
         }
     } failure:^(NSError *error) {
-        
+        [progressHUD removeFromSuperview];
+        [self clickEnable];
+        self.allowGesture = YES;
     }];
 }
 

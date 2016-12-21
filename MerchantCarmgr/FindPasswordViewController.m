@@ -7,6 +7,8 @@
 //
 
 #import "FindPasswordViewController.h"
+#import "UIViewController+ShowView.h"
+#import "Interface.h"
 
 @interface FindPasswordViewController ()
 
@@ -21,6 +23,9 @@
 @end
 
 @implementation FindPasswordViewController
+{
+    NSString *uuid;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,23 +38,35 @@
 - (void)initTextField {
     self.phoneNum = self.usernameField;
     self.phoneNum.placeholder = @"请输入您的手机号";
+    self.phoneNum.keyboardType = UIKeyboardTypePhonePad;
+    self.phoneNum.rightView = [self getVerfCodeView];
+    self.phoneNum.rightViewMode = UITextFieldViewModeAlways;
+    
     self.verify = self.passwordField;
     self.verify.placeholder = @"请输入您的短信验证码";
     
-    [self addButtonToVerify];
     [self verifyButton];
 }
 
-- (void)addButtonToVerify {
+//- (void)addButtonToVerify {
+//    self.getVerify = [EnterView verifyCodeButton];
+//    [self.getVerify addTarget:self action:@selector(startTimer) forControlEvents:UIControlEventTouchUpInside];
+//    [self.phoneNum addSubview:self.getVerify];
+//    [self.getVerify mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.mas_equalTo(self.phoneNum);
+//        make.right.mas_equalTo(-20);
+//        make.width.mas_equalTo(90);
+//        make.height.mas_equalTo(30);
+//    }];
+//}
+
+- (UIView *)getVerfCodeView {
     self.getVerify = [EnterView verifyCodeButton];
-    [self.getVerify addTarget:self action:@selector(startTimer) forControlEvents:UIControlEventTouchUpInside];
-    [self.phoneNum addSubview:self.getVerify];
-    [self.getVerify mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.phoneNum);
-        make.right.mas_equalTo(-20);
-        make.width.mas_equalTo(90);
-        make.height.mas_equalTo(30);
-    }];
+    self.getVerify.frame = CGRectMake(0, 7, 90, 30);
+    [self.getVerify addTarget:self action:@selector(sendVerf_code) forControlEvents:UIControlEventTouchUpInside];
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 110, 44)];
+    [rightView addSubview:self.getVerify];
+    return rightView;
 }
 
 - (void)verifyButton {
@@ -64,8 +81,47 @@
     }];
 }
 
+//发送验证码
+- (void)sendVerf_code {
+    if (self.phoneNum.text.length == 0) {
+        [self showAlertMessage:@"请输入手机号码"];
+        return;
+    }
+    UIView *progressHUD = [self loading:@"正在发送..."];
+    self.allowGesture = NO;//禁止交互和手势
+    uuid = [Interface uuid];
+    NSArray *verf = [Interface appsendverfcode:self.phoneNum.text type:@"2" uuid:uuid];
+    [MyNetworker POST:verf[InterfaceUrl] parameters:verf[Parameters] success:^(id responseObject) {
+        [progressHUD removeFromSuperview];
+        self.allowGesture = YES;//打开交互和手势
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            [self startTimer];
+        } else {
+            [self showAlertMessage:@"发送失败！"];
+        }
+    } failure:^(NSError *error) {
+        [progressHUD removeFromSuperview];
+        self.allowGesture = YES;//打开交互和手势
+        [self connectError];
+    }];
+}
+
 - (void)verifyCode:(UIButton *)sender {
-    sender.enabled = NO;
+    if (self.phoneNum.text.length == 0 || self.verify.text.length == 0) {
+        [self showAlertMessage:@"用户名和密码不能为空"];
+        return;
+    }
+    uuid = [Interface uuid];
+    NSArray *checkverify = [Interface appcheckverfcode:self.phoneNum.text mobile:self.phoneNum.text verf_code:self.verify.text type:@"2" uuid:uuid];
+    [MyNetworker POST:checkverify[InterfaceUrl] parameters:checkverify[Parameters] success:^(id responseObject) {
+        if ([responseObject[@"opt_state"] isEqualToString:@"success"]) {
+            
+        } else {
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)startTimer {
